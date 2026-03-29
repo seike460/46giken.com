@@ -1,0 +1,44 @@
+<svg width="1200" height="630" viewBox="0 0 1200 630" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1200" height="630" fill="#F6F1E8"/>
+  <rect x="40" y="40" width="1120" height="550" rx="30" fill="#FCFAF5" stroke="#D7D0C4"/>
+  <g opacity="0.28">
+    <path d="M40 150H1160" stroke="#14233A" stroke-width="1"/>
+    <path d="M40 210H1160" stroke="#14233A" stroke-width="1"/>
+    <path d="M40 270H1160" stroke="#14233A" stroke-width="1"/>
+    <path d="M40 330H1160" stroke="#14233A" stroke-width="1"/>
+    <path d="M40 390H1160" stroke="#14233A" stroke-width="1"/>
+    <path d="M40 450H1160" stroke="#14233A" stroke-width="1"/>
+    <path d="M40 510H1160" stroke="#14233A" stroke-width="1"/>
+    <path d="M220 40V590" stroke="#14233A" stroke-width="1"/>
+    <path d="M400 40V590" stroke="#14233A" stroke-width="1"/>
+    <path d="M580 40V590" stroke="#14233A" stroke-width="1"/>
+    <path d="M760 40V590" stroke="#14233A" stroke-width="1"/>
+    <path d="M940 40V590" stroke="#14233A" stroke-width="1"/>
+  </g>
+  <rect x="92" y="92" width="168" height="42" rx="21" fill="#EEF5F4"/>
+  <text x="122" y="119" fill="#126C81" font-family="Outfit, Noto Sans JP, sans-serif" font-size="18" font-weight="700" letter-spacing="4">46GIKEN.COM</text>
+  <text x="92" y="225" fill="#14233A" font-family="Outfit, Noto Sans JP, sans-serif" font-size="72" font-weight="700">Shiro Seike</text>
+  <text x="92" y="305" fill="#126C81" font-family="Noto Sans JP, sans-serif" font-size="58" font-weight="700">清家史郎 / ヨンロク技研</text>
+  <text x="92" y="378" fill="#51627C" font-family="Noto Sans JP, sans-serif" font-size="28" font-weight="500">Serverless / Observability / Architecture / Technical Speaking</text>
+  <text x="92" y="430" fill="#51627C" font-family="Noto Sans JP, sans-serif" font-size="28" font-weight="500">株式会社Fusic プリンシパルエンジニア / エバンジェリスト</text>
+  <rect x="92" y="482" width="176" height="74" rx="20" fill="#F1ECE2"/>
+  <text x="124" y="522" fill="#14233A" font-family="Outfit, Noto Sans JP, sans-serif" font-size="42" font-weight="700">88</text>
+  <text x="124" y="548" fill="#51627C" font-family="Outfit, Noto Sans JP, sans-serif" font-size="16" font-weight="600" letter-spacing="1.6">SPEAKER DECK</text>
+  <rect x="292" y="482" width="176" height="74" rx="20" fill="#F1ECE2"/>
+  <text x="324" y="522" fill="#14233A" font-family="Outfit, Noto Sans JP, sans-serif" font-size="42" font-weight="700">53</text>
+  <text x="324" y="548" fill="#51627C" font-family="Outfit, Noto Sans JP, sans-serif" font-size="16" font-weight="600" letter-spacing="1.6">PUBLIC REPOS</text>
+  <rect x="492" y="482" width="176" height="74" rx="20" fill="#F1ECE2"/>
+  <text x="524" y="522" fill="#14233A" font-family="Outfit, Noto Sans JP, sans-serif" font-size="42" font-weight="700">135</text>
+  <text x="524" y="548" fill="#51627C" font-family="Outfit, Noto Sans JP, sans-serif" font-size="16" font-weight="600" letter-spacing="1.6">BLOG POSTS</text>
+  <rect x="788" y="92" width="292" height="172" rx="26" fill="#14233A"/>
+  <text x="824" y="144" fill="#FCFAF5" font-family="Outfit, Noto Sans JP, sans-serif" font-size="18" font-weight="700" letter-spacing="3">PROFESSIONAL SNAPSHOT</text>
+  <text x="824" y="188" fill="#FCFAF5" font-family="Noto Sans JP, sans-serif" font-size="28" font-weight="700">2025 Japan AWS Top Engineers</text>
+  <text x="824" y="226" fill="#D6E7E7" font-family="Noto Sans JP, sans-serif" font-size="22" font-weight="500">AWS Community Builder (Serverless, 2023-2025)</text>
+  <text x="824" y="264" fill="#D6E7E7" font-family="Noto Sans JP, sans-serif" font-size="22" font-weight="500">JAWS DAYS 2026 実行委員長</text>
+  <rect x="788" y="296" width="292" height="260" rx="26" fill="#EEF5F4" stroke="#C7DDD9"/>
+  <text x="824" y="344" fill="#126C81" font-family="Outfit, Noto Sans JP, sans-serif" font-size="18" font-weight="700" letter-spacing="3">FOCUS</text>
+  <text x="824" y="394" fill="#14233A" font-family="Noto Sans JP, sans-serif" font-size="30" font-weight="700">設計、実装、発信、</text>
+  <text x="824" y="434" fill="#14233A" font-family="Noto Sans JP, sans-serif" font-size="30" font-weight="700">コミュニティ運営を</text>
+  <text x="824" y="474" fill="#14233A" font-family="Noto Sans JP, sans-serif" font-size="30" font-weight="700">分断せず前に進める。</text>
+  <text x="824" y="524" fill="#51627C" font-family="Noto Sans JP, sans-serif" font-size="20" font-weight="500">46giken.com</text>
+</svg>

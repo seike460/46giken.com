@@ -1,26 +1,157 @@
 ---
+import CallToAction from "../components/site/CallToAction.astro";
+import FeatureGrid from "../components/site/FeatureGrid.astro";
+import OfferGrid from "../components/site/OfferGrid.astro";
+import ProofRail from "../components/site/ProofRail.astro";
+import SectionIntro from "../components/site/SectionIntro.astro";
+import SiteFooter from "../components/site/SiteFooter.astro";
+import SiteHeader from "../components/site/SiteHeader.astro";
+import Timeline from "../components/site/Timeline.astro";
+import { featuredItems } from "../data/featured";
+import { heroCredentials, siteIdentity } from "../data/identity";
+import { proofMetrics } from "../data/metrics";
+import { offers } from "../data/offers";
+import { timeline } from "../data/timeline";
 import BaseLayout from "../layouts/BaseLayout.astro";
-import Header from "../components/Header.astro";
-import Hero from "../components/Hero.astro";
-import About from "../components/About.astro";
-import Services from "../components/Services.astro";
-import Expertise from "../components/Expertise.astro";
-import Achievements from "../components/Achievements.astro";
-import Community from "../components/Community.astro";
-import Contact from "../components/Contact.astro";
-import Footer from "../components/Footer.astro";
 ---
 
-<BaseLayout>
-	<Header />
-	<main>
-		<Hero />
-		<About />
-		<Services />
-		<Expertise />
-		<Achievements />
-		<Community />
-		<Contact />
+<BaseLayout
+	title={`${siteIdentity.personName} | ${siteIdentity.siteName}`}
+	description="清家史郎 (@seike460) の公式プロフィール。サーバーレス、可観測性、設計、技術発信の実績を、依頼導線とともに整理しています。"
+>
+	<SiteHeader currentPath="/" />
+	<main id="content">
+		<section class="border-b border-line/80">
+			<div class="hero-grid mx-auto grid max-w-6xl gap-10 px-6 py-20 lg:grid-cols-[1.2fr_0.8fr] lg:items-end lg:py-24">
+				<div class="space-y-8">
+					<div class="space-y-5">
+						<p class="text-xs font-semibold uppercase tracking-[0.24em] text-accent-strong">
+							Shiro Seike / {siteIdentity.handle}
+						</p>
+						<h1 class="max-w-4xl font-display text-5xl font-semibold tracking-tight text-ink md:text-7xl">
+							サーバーレス、可観測性、設計を、
+							<span class="block text-accent-strong">実務とコミュニティの両輪で前に進める。</span>
+						</h1>
+						<p class="max-w-3xl text-base leading-8 text-muted md:text-lg">
+							{siteIdentity.personName} は {siteIdentity.location} を拠点に、AWS Serverless を中心としたアーキテクチャ設計、OpenTelemetry を軸にした
+							Observability、そして継続的な技術発信とコミュニティ運営を行っています。
+						</p>
+					</div>
+					<div class="flex flex-wrap gap-3">
+						<a
+							href={siteIdentity.contactUrl}
+							target="_blank"
+							rel="noopener noreferrer"
+							class="inline-flex items-center justify-center rounded-full bg-ink px-6 py-3 text-sm font-semibold text-white transition hover:bg-accent-strong"
+						>
+							お問い合わせ
+						</a>
+						<a
+							href="/speaking/"
+							class="inline-flex items-center justify-center rounded-full border border-line bg-surface px-6 py-3 text-sm font-semibold text-ink transition hover:border-accent hover:text-accent-strong"
+						>
+							登壇実績を見る
+						</a>
+					</div>
+					<ul class="flex flex-wrap gap-3">
+						{heroCredentials.map((item) => (
+							<li class="rounded-full border border-line bg-surface px-4 py-2 text-sm text-ink shadow-soft">
+								<span class="font-semibold">{item.title}</span>
+								<span class="ml-2 text-muted">{item.detail}</span>
+								{item.period && <span class="ml-2 text-subtle">{item.period}</span>}
+							</li>
+						))}
+					</ul>
+				</div>
+				<aside class="rounded-[2rem] border border-line bg-panel px-7 py-8 shadow-soft">
+					<p class="text-xs font-semibold uppercase tracking-[0.22em] text-accent-strong">Professional Snapshot</p>
+					<h2 class="mt-4 font-display text-3xl font-semibold tracking-tight text-ink">
+						{siteIdentity.role}
+					</h2>
+					<p class="mt-4 text-sm leading-7 text-muted">{siteIdentity.summary}</p>
+					<dl class="mt-8 space-y-5">
+						<div>
+							<dt class="text-xs font-semibold uppercase tracking-[0.18em] text-subtle">Focus</dt>
+							<dd class="mt-2 text-sm leading-7 text-ink">
+								Serverless / Observability / Clean Architecture / Technical Speaking
+							</dd>
+						</div>
+						<div>
+							<dt class="text-xs font-semibold uppercase tracking-[0.18em] text-subtle">Approach</dt>
+							<dd class="mt-2 text-sm leading-7 text-ink">
+								設計、実装、発信、コミュニティ運営を分断せず、現場で使える形まで落とします。
+							</dd>
+						</div>
+						<div>
+							<dt class="text-xs font-semibold uppercase tracking-[0.18em] text-subtle">Availability</dt>
+							<dd class="mt-2 text-sm leading-7 text-ink">
+								技術相談、登壇、研修、技術広報支援を中心に対応します。
+							</dd>
+						</div>
+					</dl>
+					<p class="mt-8 text-sm leading-7 text-muted">{siteIdentity.philosophy}</p>
+				</aside>
+			</div>
+		</section>
+
+		<section class="mx-auto max-w-6xl px-6 py-16 md:py-20">
+			<SectionIntro
+				eyebrow="Proof"
+				title="公開情報ベースで辿れる、現在地の証拠"
+				intro="数字は多ければ強いわけではありません。継続して公開され、外から追えることを優先して、信頼の根拠になる数字だけを残しています。"
+			/>
+			<div class="mt-10">
+				<ProofRail items={proofMetrics} />
+			</div>
+		</section>
+
+		<section id="offers" class="border-y border-line/80 bg-surface/80">
+			<div class="mx-auto max-w-6xl px-6 py-16 md:py-20">
+				<SectionIntro
+					eyebrow="Offer"
+					title="依頼できることを、先に明確にする"
+					intro="技術カテゴリの列挙ではなく、依頼側が判断しやすい単位で整理しています。設計レビュー、登壇・研修、継続発信の支援が主な入口です。"
+				/>
+				<div class="mt-10">
+					<OfferGrid items={offers} />
+				</div>
+			</div>
+		</section>
+
+		<section class="mx-auto max-w-6xl px-6 py-16 md:py-20">
+				<SectionIntro
+					eyebrow="Selected Work"
+					title="代表アウトプット"
+					intro="登壇、記事、公開アーカイブの中から、現在の専門性とスタンスが最も伝わるものだけを抜粋しています。"
+				/>
+			<div class="mt-10">
+				<FeatureGrid items={featuredItems} />
+			</div>
+		</section>
+
+		<section class="border-y border-line/80 bg-surface/80">
+			<div class="mx-auto max-w-6xl px-6 py-16 md:py-20">
+				<SectionIntro
+					eyebrow="Community"
+					title="技術者としての信頼は、場を継続して作ってきた履歴でも積み上がる"
+					intro="個人の技術力だけでなく、コミュニティの中でどう振る舞ってきたかも外から見える信頼の一部です。"
+				/>
+				<div class="mt-10">
+					<Timeline items={timeline.filter((e) => e.showOnTop)} />
+				</div>
+			</div>
+		</section>
+
+		<section class="mx-auto max-w-6xl px-6 py-16 md:py-20">
+			<CallToAction
+				title="設計レビュー、登壇、技術発信の相談に絞って受け付けます"
+				copy="まずは背景と相談したいテーマが分かる状態で送ってもらえれば十分です。内容に応じて、登壇、研修、壁打ち、継続支援のどれが適切かを整理して返します。"
+				primaryHref={siteIdentity.contactUrl}
+				primaryLabel="フォームから問い合わせる"
+				secondaryHref="/profile/"
+				secondaryLabel="プロフィール詳細を見る"
+			/>
+		</section>
 	</main>
-	<Footer />
+	<SiteFooter />
 </BaseLayout>
