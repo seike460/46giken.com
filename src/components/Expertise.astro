@@ -1,0 +1,50 @@
+---
+const skills = {
+	Languages: ["TypeScript", "PHP", "Go"],
+	Cloud: ["AWS Lambda", "CDK", "EventBridge", "Step Functions", "DynamoDB", "S3", "CloudFront"],
+	Architecture: ["Clean Architecture", "CQRS+ES", "Event-Driven"],
+	Observability: ["OpenTelemetry", "AWS X-Ray", "CloudWatch"],
+	Frameworks: ["Laravel", "Bref", "Astro"],
+	AI: ["Amazon Bedrock", "Amazon Q Developer"],
+};
+
+const certifications = [
+	"Solutions Architect – Professional",
+	"Solutions Architect – Associate",
+	"Developer – Associate",
+	"SysOps Administrator – Associate",
+	"Security – Specialty",
+	"Cloud Practitioner",
+];
+---
+
+<section id="expertise" class="py-20 px-6">
+	<div class="mx-auto max-w-5xl">
+		<h2 class="text-2xl font-bold text-navy-900 dark:text-navy-100 mb-10">Expertise</h2>
+		<div class="space-y-6">
+			{Object.entries(skills).map(([category, tags]) => (
+				<div>
+					<h3 class="text-sm font-medium text-navy-500 dark:text-navy-400 mb-2">{category}</h3>
+					<div class="flex flex-wrap gap-2">
+						{tags.map((tag) => (
+							<span class="px-3 py-1 text-sm bg-navy-100 dark:bg-navy-800 text-navy-700 dark:text-navy-300 rounded-md">
+								{tag}
+							</span>
+						))}
+					</div>
+				</div>
+			))}
+		</div>
+		<div class="mt-12">
+			<h3 class="text-sm font-medium text-navy-500 dark:text-navy-400 mb-3">AWS Certified（6冠）</h3>
+			<div class="grid sm:grid-cols-2 gap-2">
+				{certifications.map((cert) => (
+					<div class="flex items-center gap-2 text-sm text-navy-700 dark:text-navy-300">
+						<span class="text-accent">✓</span>
+						<span>{cert}</span>
+					</div>
+				))}
+			</div>
+		</div>
+	</div>
+</section>

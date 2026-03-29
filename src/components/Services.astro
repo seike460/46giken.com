@@ -1,0 +1,51 @@
+---
+const services = [
+	{
+		title: "技術コンサルティング",
+		items: [
+			"Serverless アーキテクチャ設計",
+			"AWS インフラ構築・最適化",
+			"OpenTelemetry / Observability 導入",
+		],
+	},
+	{
+		title: "登壇・執筆",
+		items: [
+			"カンファレンス登壇・基調講演",
+			"技術記事執筆・監修",
+			"企業向け技術研修",
+		],
+	},
+	{
+		title: "ソフトウェア開発",
+		items: [
+			"TypeScript / PHP によるサーバーレス開発",
+			"AWS CDK によるインフラコード化",
+			"Clean Architecture / CQRS+ES 設計",
+		],
+	},
+];
+---
+
+<section id="services" class="py-20 px-6 bg-navy-50 dark:bg-navy-900">
+	<div class="mx-auto max-w-5xl">
+		<h2 class="text-2xl font-bold text-navy-900 dark:text-navy-100 mb-10">Services</h2>
+		<div class="grid md:grid-cols-3 gap-6">
+			{services.map((service) => (
+				<div class="bg-white dark:bg-navy-800 border border-navy-200 dark:border-navy-700 rounded-lg p-6">
+					<h3 class="text-lg font-semibold text-navy-900 dark:text-navy-100 mb-4">
+						{service.title}
+					</h3>
+					<ul class="space-y-2 text-sm text-navy-600 dark:text-navy-400">
+						{service.items.map((item) => (
+							<li class="flex items-start gap-2">
+								<span class="text-accent mt-0.5 shrink-0">—</span>
+								<span>{item}</span>
+							</li>
+						))}
+					</ul>
+				</div>
+			))}
+		</div>
+	</div>
+</section>
