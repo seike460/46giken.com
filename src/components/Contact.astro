@@ -1,0 +1,95 @@
+---
+const contactUrl = "https://forms.gle/eH22tCcq6K8RYPBUA";
+
+const intents = [
+	{
+		title: "構成レビュー / 技術アドバイザリー",
+		description: "移行方針、サービス選定、Observability の整理など、設計判断を前に進めたいときに。",
+		points: ["現状の構成や課題", "迷っている論点", "判断したい期限"],
+		label: "構成レビューを相談する",
+		featured: true,
+	},
+	{
+		title: "登壇・研修",
+		description: "イベントや社内勉強会で、対象者に合わせたテーマと難易度で話してほしいときに。",
+		points: ["イベント名や社内研修の目的", "対象者", "話してほしいテーマ"],
+		label: "登壇・研修を相談する",
+		featured: false,
+	},
+	{
+		title: "技術広報支援",
+		description: "発信テーマや媒体の選び方がぼやけていて、継続できる軸を作りたいときに。",
+		points: ["発信したい背景", "採用やブランドの狙い", "いま困っていること"],
+		label: "技術広報を相談する",
+		featured: false,
+	},
+];
+---
+
+<section id="contact" class="py-28 px-6">
+	<div class="mx-auto max-w-5xl">
+		<div class="rounded-2xl bg-gradient-to-br from-navy-900 via-navy-800 to-navy-900 dark:from-navy-800 dark:via-navy-900 dark:to-navy-800 p-10 md:p-14 text-center relative overflow-hidden">
+			<!-- Subtle glow -->
+			<div class="absolute top-0 right-0 w-[200px] h-[200px] rounded-full bg-accent/10 blur-[60px]"></div>
+
+			<p class="text-accent text-sm font-medium tracking-widest uppercase mb-3 relative">Contact</p>
+			<h2 class="text-2xl md:text-3xl font-bold text-white mb-4 relative">近い相談内容から、そのまま送れます</h2>
+			<p class="text-navy-400 mb-8 max-w-lg mx-auto relative">
+				背景と悩みを数行で構いません。内容を確認のうえ、通常2営業日以内に進め方をご返信します。
+			</p>
+			<div class="grid gap-4 text-left relative md:grid-cols-3">
+				{intents.map((intent) => (
+					<div class:list={[
+						"rounded-2xl p-6 backdrop-blur-sm",
+						intent.featured
+							? "border border-white/25 bg-white text-navy-900"
+							: "border border-white/10 bg-white/5 text-white",
+					]}>
+						<p class:list={[
+							"text-xs font-semibold uppercase tracking-[0.2em] mb-3",
+							intent.featured ? "text-accent-dark" : "text-accent",
+						]}>
+							{intent.title}
+						</p>
+						<p class:list={[
+							"text-sm leading-7 mb-5",
+							intent.featured ? "text-navy-700" : "text-navy-300",
+						]}>
+							{intent.description}
+						</p>
+						<p class:list={[
+							"text-xs font-semibold uppercase tracking-[0.16em] mb-3",
+							intent.featured ? "text-navy-500" : "text-navy-500",
+						]}>
+							送っていただきたいこと
+						</p>
+						<ul class:list={[
+							"space-y-2 text-sm mb-6",
+							intent.featured ? "text-navy-700" : "text-navy-200",
+						]}>
+							{intent.points.map((point) => (
+								<li class="flex items-start gap-2">
+									<span class="mt-0.5 text-accent">•</span>
+									<span>{point}</span>
+								</li>
+							))}
+						</ul>
+						<a
+							href={contactUrl}
+							target="_blank"
+							rel="noopener noreferrer"
+							class:list={[
+								"inline-flex items-center justify-center gap-2 rounded-full px-5 py-3 text-sm font-semibold transition-all duration-300 hover:scale-[1.02]",
+								intent.featured
+									? "bg-accent text-white hover:bg-accent-dark"
+									: "border border-white/20 text-white hover:border-white/40",
+							]}
+						>
+							{intent.label}
+						</a>
+					</div>
+				))}
+			</div>
+		</div>
+	</div>
+</section>

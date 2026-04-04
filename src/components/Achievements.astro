@@ -1,0 +1,114 @@
+---
+const consultationExamples = [
+	"Lambda + API Gateway 構成のレビューをお願いしたい",
+	"OpenTelemetry 導入の進め方を壁打ちしたい",
+	"社内の Serverless 勉強会で登壇してほしい",
+	"技術ブランディングの発信戦略を一緒に整理したい",
+];
+
+const stats = [
+	{ value: 94, suffix: "+", label: "Speaker Deck", sub: "公開スライド", href: "https://speakerdeck.com/seike460" },
+	{ value: 53, suffix: "+", label: "Public Repos", sub: "GitHub", href: "https://github.com/seike460" },
+	{ value: 135, suffix: "+", label: "Blog Posts", sub: "技術記事", href: "https://blog.seike460.com" },
+	{ value: 6, suffix: "冠", label: "AWS 認定", sub: "Certified", href: undefined },
+	{ value: 14, suffix: "+年", label: "コミュニティ", sub: "since 2012", href: undefined },
+];
+
+const conferences = [
+	"ServerlessDays Tokyo",
+	"AWS Dev Day Japan",
+	"JAWS DAYS",
+	"PHPerKaigi",
+	"PHPカンファレンス福岡",
+	"Backlog World",
+	"Fusic Tech Live",
+];
+---
+
+<section id="achievements" class="relative py-28 px-6 bg-navy-900 dark:bg-navy-950 overflow-hidden">
+	<!-- Glow orbs -->
+	<div class="absolute top-10 right-[-5%] w-[300px] h-[300px] rounded-full bg-accent/10 blur-[80px]" style="animation: pulse-glow 7s ease-in-out infinite;"></div>
+	<div class="absolute bottom-[-10%] left-[10%] w-[250px] h-[250px] rounded-full bg-warm-500/10 blur-[70px]" style="animation: float 9s ease-in-out infinite 1s;"></div>
+
+	<div class="relative mx-auto max-w-5xl">
+		<p class="text-accent text-sm font-medium tracking-widest uppercase mb-3">Achievements</p>
+		<h2 class="text-2xl md:text-3xl font-bold text-white mb-12">こんな相談に対応しています</h2>
+
+		<!-- Consultation examples (decision proof) -->
+		<div class="grid sm:grid-cols-2 gap-4 mb-14">
+			{consultationExamples.map((example) => (
+				<div class="flex items-start gap-3 rounded-xl border border-navy-700 bg-navy-800/50 backdrop-blur-sm p-5">
+					<span class="text-accent mt-0.5 shrink-0">
+						<svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M8.625 12a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0H8.25m4.125 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0H12m4.125 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0h-.375M21 12c0 4.556-4.03 8.25-9 8.25a9.764 9.764 0 01-2.555-.337A5.972 5.972 0 015.41 20.97a5.969 5.969 0 01-.474-.065 4.48 4.48 0 00.978-2.025c.09-.457-.133-.901-.467-1.226C3.93 16.178 3 14.189 3 12c0-4.556 4.03-8.25 9-8.25s9 3.694 9 8.25z" /></svg>
+					</span>
+					<p class="text-sm text-navy-200">「{example}」</p>
+				</div>
+			))}
+		</div>
+
+		<!-- Stats (supporting proof) -->
+		<p class="text-xs text-navy-500 uppercase tracking-widest mb-4">活動実績</p>
+		<div class="grid grid-cols-3 md:grid-cols-5 gap-3 mb-10" id="stats-grid">
+			{stats.map((stat) => (
+				<div class="text-center p-3">
+					<p class="text-2xl md:text-3xl font-bold text-accent tabular-nums">
+						<span data-target={stat.value} data-suffix={stat.suffix}>0</span>
+					</p>
+					<p class="text-xs text-navy-400 mt-1">{stat.label}</p>
+					{stat.href && (
+						<a href={stat.href} target="_blank" rel="noopener noreferrer" class="text-[10px] text-navy-600 hover:text-accent transition-colors uppercase tracking-wider">
+							Source ↗
+						</a>
+					)}
+				</div>
+			))}
+		</div>
+
+		<!-- Conference name badges -->
+		<div>
+			<p class="text-xs text-navy-500 uppercase tracking-widest mb-4">登壇実績のあるカンファレンス</p>
+			<div class="flex flex-wrap gap-2">
+				{conferences.map((name) => (
+					<span class="px-3 py-1.5 text-xs text-navy-300 border border-navy-700 rounded-full bg-navy-800/30">
+						{name}
+					</span>
+				))}
+			</div>
+		</div>
+	</div>
+</section>
+
+<script is:inline>
+(function() {
+	function countUp(el, target, suffix, duration) {
+		var start = performance.now();
+		function tick(now) {
+			var progress = Math.min((now - start) / duration, 1);
+			var eased = 1 - Math.pow(1 - progress, 3);
+			el.textContent = Math.floor(eased * target) + (progress >= 1 ? suffix : '');
+			if (progress < 1) requestAnimationFrame(tick);
+		}
+		requestAnimationFrame(tick);
+	}
+
+	var grid = document.getElementById('stats-grid');
+	if (!grid) return;
+
+	var fired = false;
+	var io = new IntersectionObserver(function(entries) {
+		if (fired) return;
+		entries.forEach(function(e) {
+			if (e.isIntersecting) {
+				fired = true;
+				grid.querySelectorAll('[data-target]').forEach(function(span) {
+					var target = parseInt(span.dataset.target, 10);
+					var suffix = span.dataset.suffix || '';
+					countUp(span, target, suffix, 2000);
+				});
+				io.unobserve(grid);
+			}
+		});
+	}, { threshold: 0.2 });
+	io.observe(grid);
+})();
+</script>

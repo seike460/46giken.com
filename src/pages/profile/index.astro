@@ -1,168 +1,126 @@
 ---
-import CallToAction from "../../components/site/CallToAction.astro";
-import SectionIntro from "../../components/site/SectionIntro.astro";
-import SiteFooter from "../../components/site/SiteFooter.astro";
-import SiteHeader from "../../components/site/SiteHeader.astro";
-import Timeline from "../../components/site/Timeline.astro";
-import { externalLinks, profileCredentials, siteIdentity } from "../../data/identity";
-import { projects } from "../../data/projects";
-import { timeline } from "../../data/timeline";
 import BaseLayout from "../../layouts/BaseLayout.astro";
+import Header from "../../components/Header.astro";
+import Footer from "../../components/Footer.astro";
+import { siteIdentity, profileCredentials } from "../../data/identity";
+import { timeline } from "../../data/timeline";
+
+const strengths = [
+	{
+		title: "サーバーレスアーキテクチャの構成レビュー",
+		desc: "AWS Lambda、Step Functions、EventBridge を中心とした構成の妥当性確認と改善提案",
+	},
+	{
+		title: "OpenTelemetry / Observability の導入設計",
+		desc: "テレメトリー計装の設計から、Datadog・X-Ray との連携まで",
+	},
+	{
+		title: "Clean Architecture / CQRS+ES への移行相談",
+		desc: "既存システムの設計改善と、イベント駆動アーキテクチャへの段階的移行",
+	},
+	{
+		title: "カンファレンスや社内勉強会での技術登壇",
+		desc: "Serverless・Observability・設計をテーマに、audience に合わせたセッションを提供",
+	},
+];
+
+const topCredentials = profileCredentials.slice(0, 4);
 ---
 
-	<BaseLayout
-		title={`Profile | ${siteIdentity.personName} | ${siteIdentity.siteName}`}
-		description="清家史郎の経歴、役割、表彰、運営実績、公開アーカイブを公開情報ベースで整理したプロフィールページ。"
-	>
-	<SiteHeader currentPath="/profile/" />
+<BaseLayout
+	title="Profile | ヨンロク技研"
+	description="AWS Serverless と Observability を軸に、構成レビュー、移行相談、登壇・研修を行う清家史郎のプロフィール。"
+>
+	<Header currentPath="/profile/" />
 	<main id="content">
-		<section class="border-b border-line/80">
-			<div class="mx-auto max-w-6xl px-6 py-20 md:py-24">
-				<div class="max-w-4xl space-y-6">
-					<p class="text-xs font-semibold uppercase tracking-[0.24em] text-accent-strong">Profile</p>
-					<h1 class="font-display text-5xl font-semibold tracking-tight text-ink md:text-7xl">
-						公開実績を起点に、<span class="block text-accent-strong">何をやってきた人かを整理する。</span>
-					</h1>
-					<p class="max-w-3xl text-base leading-8 text-muted md:text-lg">{siteIdentity.intro}</p>
-				</div>
-				<div class="mt-12 grid gap-6 xl:grid-cols-[1.2fr_0.8fr]">
-					<article class="rounded-[2rem] border border-line bg-panel px-7 py-8 shadow-soft">
-						<p class="text-xs font-semibold uppercase tracking-[0.18em] text-subtle">Current</p>
-						<h2 class="mt-4 font-display text-3xl font-semibold tracking-tight text-ink">
-							{siteIdentity.personName}
-						</h2>
-						<p class="mt-3 text-sm leading-7 text-muted">{siteIdentity.role}</p>
-						<p class="mt-6 text-sm leading-7 text-ink">{siteIdentity.summary}</p>
-						<ul class="mt-8 flex flex-wrap gap-3">
-							{siteIdentity.focusAreas.map((area) => (
-								<li class="rounded-full border border-line bg-surface px-4 py-2 text-sm text-ink">
-									{area}
-								</li>
-							))}
-						</ul>
-					</article>
-					<article class="rounded-[2rem] border border-line bg-surface px-7 py-8 shadow-soft">
-						<p class="text-xs font-semibold uppercase tracking-[0.18em] text-subtle">External Links</p>
-						<ul class="mt-5 space-y-4">
-							{externalLinks.map((link) => (
-								<li>
-									<a
-										href={link.href}
-										target="_blank"
-										rel="noopener noreferrer"
-										class="block rounded-2xl border border-line px-4 py-4 transition hover:border-accent hover:bg-paper"
-									>
-										<p class="text-sm font-semibold text-ink">{link.label}</p>
-										<p class="mt-1 text-sm leading-6 text-muted">{link.description}</p>
-									</a>
-								</li>
-							))}
-						</ul>
-					</article>
-				</div>
+		<section class="pt-32 pb-20 px-6 bg-navy-900">
+			<div class="mx-auto max-w-5xl">
+				<p class="text-accent text-sm font-medium tracking-widest uppercase mb-4">Profile</p>
+				<h1 class="text-4xl md:text-5xl font-bold text-white leading-tight mb-4">
+					清家史郎
+				</h1>
+				<p class="text-navy-300 text-lg max-w-2xl">
+					AWS Serverless と Observability を軸に、構成レビュー、移行相談、登壇・研修を行っています。技術組織の迷いを言語化し、次の設計判断を切れる状態まで整理します。
+				</p>
+				<p class="text-navy-500 text-sm mt-3">
+					ヨンロク技研 代表 / 株式会社Fusic プリンシパルエンジニア・エバンジェリスト
+				</p>
 			</div>
 		</section>
 
-		<section class="mx-auto max-w-6xl px-6 py-16 md:py-20">
-			<SectionIntro
-				eyebrow="Credentials"
-				title="現在の信頼材料"
-				intro="所属、表彰、コミュニティ上の役割を、個人ブランドの背景として明示しています。"
-			/>
-			<div class="mt-10 grid gap-5 md:grid-cols-2 xl:grid-cols-3">
-				{profileCredentials.map((item) => (
-					<article class="rounded-3xl border border-line bg-surface px-6 py-6 shadow-soft">
-						<p class="text-xs font-semibold uppercase tracking-[0.2em] text-accent-strong">
-							{item.period ?? "Current"}
-						</p>
-						<h3 class="mt-4 text-lg font-semibold text-ink">{item.title}</h3>
-						<p class="mt-3 text-sm leading-7 text-muted">{item.detail}</p>
-						{item.sourceUrl && (
-							<a
-								href={item.sourceUrl}
-								target="_blank"
-								rel="noopener noreferrer"
-								class="mt-5 inline-flex items-center gap-2 text-sm font-semibold text-ink transition hover:text-accent-strong"
-							>
-								<span>関連ソース</span>
-								<span aria-hidden="true">↗</span>
-							</a>
-						)}
-					</article>
-				))}
-			</div>
-		</section>
-
-		<section class="border-y border-line/80 bg-surface/80">
-			<div class="mx-auto max-w-6xl px-6 py-16 md:py-20">
-					<SectionIntro
-						eyebrow="Public Work"
-						title="公開アーカイブ"
-						intro="非公開リポジトリやクローズドな資料は載せず、誰でも辿れる公開アーカイブと公開プロフィールだけを掲載しています。"
-					/>
-				<div class="mt-10 grid gap-5 xl:grid-cols-3">
-					{projects.map((project) => (
-						<article class="rounded-3xl border border-line bg-panel px-6 py-6 shadow-soft">
-							<p class="text-xs font-semibold uppercase tracking-[0.2em] text-accent-strong">
-								{project.proofType}
-							</p>
-							<h3 class="mt-4 font-display text-2xl font-semibold tracking-tight text-ink">
-								{project.name}
-							</h3>
-							<p class="mt-4 text-sm leading-7 text-muted">{project.oneLiner}</p>
-							<p class="mt-4 text-sm font-medium text-ink">{project.role}</p>
-							<ul class="mt-5 flex flex-wrap gap-2">
-								{project.stack.map((item) => (
-									<li class="rounded-full border border-line bg-surface px-3 py-1 text-xs text-ink">
-										{item}
-									</li>
-								))}
-							</ul>
-							<a
-								href={project.href}
-								target="_blank"
-								rel="noopener noreferrer"
-								class="mt-6 inline-flex items-center gap-2 text-sm font-semibold text-ink transition hover:text-accent-strong"
-							>
-								<span>公開先を見る</span>
-								<span aria-hidden="true">↗</span>
-							</a>
-						</article>
+		<!-- 得意な相談テーマ（何を頼める人か） -->
+		<section class="py-20 px-6">
+			<div class="mx-auto max-w-5xl">
+				<h2 class="text-2xl font-bold text-navy-900 dark:text-navy-100 mb-10">よく受ける相談</h2>
+				<div class="grid md:grid-cols-2 gap-6">
+					{strengths.map((s) => (
+						<div class="border border-navy-200 dark:border-navy-700 rounded-xl p-6">
+							<h3 class="text-base font-semibold text-navy-900 dark:text-navy-100 mb-2">{s.title}</h3>
+							<p class="text-sm text-navy-600 dark:text-navy-400">{s.desc}</p>
+						</div>
 					))}
 				</div>
 			</div>
 		</section>
 
-		<section class="mx-auto max-w-6xl px-6 py-16 md:py-20">
-			<SectionIntro
-				eyebrow="Timeline"
-				title="コミュニティと発信の年表"
-				intro="発信力は単年では作れません。どこで踏み出し、どこで役割を引き受けてきたかを簡潔に並べています。"
-			/>
-			<div class="mt-10">
-				<Timeline items={timeline} />
+		<!-- 経歴ハイライト（頼む理由に絞る） -->
+		<section class="py-20 px-6 bg-navy-50 dark:bg-navy-900">
+			<div class="mx-auto max-w-5xl">
+				<h2 class="text-2xl font-bold text-navy-900 dark:text-navy-100 mb-10">相談先としての裏付け</h2>
+				<div class="grid md:grid-cols-2 gap-6">
+					{topCredentials.map((item) => (
+						<div class="bg-white dark:bg-navy-800 border border-navy-200 dark:border-navy-700 rounded-lg p-6">
+							<p class="text-xs font-medium text-accent uppercase tracking-wide">
+								{item.period ?? "Current"}
+							</p>
+							<h3 class="mt-3 text-lg font-semibold text-navy-900 dark:text-navy-100">{item.title}</h3>
+							<p class="mt-2 text-sm text-navy-600 dark:text-navy-400">{item.detail}</p>
+						</div>
+					))}
+				</div>
 			</div>
 		</section>
 
-		<section class="mx-auto max-w-6xl px-6 py-16 md:py-20">
-			<div class="rounded-[2rem] border border-line bg-surface px-8 py-8 shadow-soft">
-				<p class="text-xs font-semibold uppercase tracking-[0.22em] text-accent-strong">Verification Note</p>
-					<p class="mt-4 max-w-4xl text-sm leading-7 text-muted">
-						このページの数値と肩書きは、2026-03-29 時点で参照できた公開プロフィール、Speaker Deck、GitHub の公開プロフィール、Blog アーカイブなど、外部から辿れる公開情報をもとに整理しています。非公開リポジトリやクローズドな資料は、実績カードや導線としては掲載しません。
-					</p>
-				</div>
-			</section>
+		<!-- 中間CTA -->
+		<section class="py-16 px-6">
+			<div class="mx-auto max-w-5xl">
+				<div class="rounded-2xl bg-gradient-to-br from-navy-900 via-navy-800 to-navy-900 p-10 text-center">
+						<h2 class="text-xl font-bold text-white mb-4">背景と悩みを送ってください</h2>
+						<p class="text-navy-400 mb-6 max-w-md mx-auto text-sm">
+							数行で構いません。状況を確認したうえで、対応可否と進め方のたたき台をご返信します。
+						</p>
+					<a
+						href={siteIdentity.contactUrl}
+						target="_blank"
+						rel="noopener noreferrer"
+						class="inline-flex items-center gap-2 px-8 py-4 bg-white text-accent-dark font-semibold rounded-full shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300"
+					>
+							背景と悩みを送る
+							<svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" /></svg>
+						</a>
+					</div>
+			</div>
+		</section>
 
-		<section class="mx-auto max-w-6xl px-6 py-16 md:py-20">
-			<CallToAction
-				title="技術相談の前に、人となりと実績を見たい場合はここを入口にしてください"
-				copy="継続発信、設計、コミュニティ運営のどれに重心がある人なのかを先に把握してもらうためのプロフィールです。相談内容が固まっていれば、そのままフォームへ進んでもらって構いません。"
-				primaryHref={siteIdentity.contactUrl}
-				primaryLabel="フォームへ進む"
-				secondaryHref="/speaking/"
-				secondaryLabel="登壇ページを見る"
-			/>
+		<!-- 活動の年表（補助） -->
+		<section class="py-20 px-6 bg-navy-50 dark:bg-navy-900">
+			<div class="mx-auto max-w-5xl">
+				<h2 class="text-2xl font-bold text-navy-900 dark:text-navy-100 mb-10">活動の年表</h2>
+				<div class="space-y-6">
+					{timeline.map((entry) => (
+						<div class="flex items-baseline gap-4">
+							<span class="text-xs font-medium text-accent bg-accent/10 px-2 py-0.5 rounded shrink-0 w-20 text-center">
+								{entry.year}
+							</span>
+							<div>
+								<p class="font-medium text-navy-800 dark:text-navy-200">{entry.title}</p>
+								<p class="text-sm text-navy-500 dark:text-navy-400 mt-1">{entry.body}</p>
+							</div>
+						</div>
+					))}
+				</div>
+			</div>
 		</section>
 	</main>
-	<SiteFooter />
+	<Footer />
 </BaseLayout>
