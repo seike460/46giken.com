@@ -1,0 +1,39 @@
+---
+const steps = [
+	{
+		number: "01",
+		title: "背景と迷っている点を送る",
+		body: "構成図がなくても構いません。現状、困っていること、期限感が分かれば十分です。",
+	},
+	{
+		number: "02",
+		title: "論点と進め方を整理して返す",
+		body: "何を先に決めるべきか、どこを追加で確認すべきか、相談の進め方を切り分けます。",
+	},
+	{
+		number: "03",
+		title: "レビュー / 登壇 / 支援を実施する",
+		body: "構成レビュー、研修、登壇、技術広報支援のいずれでも、次に動ける形まで言語化します。",
+	},
+];
+---
+
+<section class="py-24 px-6">
+	<div class="mx-auto max-w-5xl">
+		<p class="text-accent text-sm font-medium tracking-widest uppercase mb-3">Process</p>
+		<h2 class="text-2xl md:text-3xl font-bold text-navy-900 dark:text-navy-100 mb-4">相談から実施まで、無駄なく進めます</h2>
+		<p class="max-w-3xl text-sm md:text-base text-navy-600 dark:text-navy-400 mb-10">
+			「まず何を送ればいいか分からない」で止まらないように、入口をできるだけ軽くしています。
+		</p>
+
+		<div class="grid md:grid-cols-3 gap-6">
+			{steps.map((step) => (
+				<div class="rounded-2xl border border-navy-200 dark:border-navy-700 bg-white dark:bg-navy-800 p-7">
+					<p class="text-xs font-semibold tracking-[0.2em] uppercase text-accent mb-4">{step.number}</p>
+					<h3 class="text-lg font-semibold text-navy-900 dark:text-navy-100 mb-3">{step.title}</h3>
+					<p class="text-sm leading-7 text-navy-600 dark:text-navy-400">{step.body}</p>
+				</div>
+			))}
+		</div>
+	</div>
+</section>

@@ -1,0 +1,27 @@
+---
+const links = [
+	{ label: "Speaker Deck", href: "https://speakerdeck.com/seike460" },
+	{ label: "GitHub", href: "https://github.com/seike460" },
+	{ label: "Blog", href: "https://blog.seike460.com" },
+	{ label: "connpass", href: "https://connpass.com/user/shise460/" },
+	{ label: "X", href: "https://x.com/seike460" },
+];
+---
+
+<footer class="py-8 px-6 border-t border-navy-200 dark:border-navy-800">
+	<div class="mx-auto max-w-5xl flex flex-col sm:flex-row items-center justify-between gap-4">
+		<p class="text-xs text-navy-500 dark:text-navy-400">&copy; 2026 ヨンロク技研</p>
+		<div class="flex flex-wrap gap-4">
+			{links.map((link) => (
+				<a
+					href={link.href}
+					target="_blank"
+					rel="noopener noreferrer"
+					class="text-xs text-navy-500 dark:text-navy-400 hover:text-accent transition-colors"
+				>
+					{link.label} ↗
+				</a>
+			))}
+		</div>
+	</div>
+</footer>

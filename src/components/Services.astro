@@ -1,0 +1,94 @@
+---
+const services = [
+	{
+		title: "構成レビュー / 技術アドバイザリー",
+		audience: "移行方針やサービス選定で止まりやすい技術責任者・リード向け",
+		outcome: "相談後に、採る案・捨てる案・次に検証すべき論点まで整理します",
+		items: [
+			"現行構成のボトルネック整理",
+			"Lambda / Step Functions / EventBridge などの選定レビュー",
+			"Observability を含む移行ステップの整理",
+		],
+		color: "accent",
+		cta: "構成レビューを相談する",
+		ctaHref: "#contact",
+		icon: `<svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M5.25 14.25h13.5m-13.5 0a3 3 0 01-3-3m3 3a3 3 0 100 6h13.5a3 3 0 100-6m-16.5-3a3 3 0 013-3h13.5a3 3 0 013 3m-19.5 0a4.5 4.5 0 01.9-2.7L5.737 5.1a3.375 3.375 0 012.7-1.35h7.126c1.062 0 2.062.5 2.7 1.35l2.587 3.45a4.5 4.5 0 01.9 2.7" /></svg>`,
+	},
+	{
+		title: "登壇・研修",
+		audience: "理解と熱量が残る登壇を求めるイベント主催者・研修担当者向け",
+		outcome: "対象者、難易度、持ち帰りに合わせて、伝わる構成へ調整します",
+		items: [
+			"Serverless、Observability、設計をテーマにした登壇",
+			"社内向け研修・ハンズオン",
+			"技術イベントやコミュニティ向けのゲスト登壇",
+		],
+		color: "warm",
+		cta: "登壇・研修の詳細を見る",
+		ctaHref: "/speaking/",
+		icon: `<svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M12 18.75a6 6 0 006-6v-1.5m-6 7.5a6 6 0 01-6-6v-1.5m6 7.5v3.75m-3.75 0h7.5M12 15.75a3 3 0 01-3-3V4.5a3 3 0 116 0v8.25a3 3 0 01-3 3z" /></svg>`,
+	},
+	{
+		title: "技術広報支援",
+		audience: "発信の軸が定まらず、技術広報が単発で終わりがちな組織向け",
+		outcome: "発信テーマ、媒体、次の一手まで、継続できる形に整理します",
+		items: [
+			"発信テーマの棚卸し",
+			"記事・スライド・登壇企画の整理",
+			"イベント登壇の企画相談",
+		],
+		color: "trust",
+		cta: "技術広報を相談する",
+		ctaHref: "#contact",
+		icon: `<svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M17.25 6.75L22.5 12l-5.25 5.25m-10.5 0L1.5 12l5.25-5.25m7.5-3l-4.5 16.5" /></svg>`,
+	},
+];
+
+const colorMap: Record<string, { bar: string; iconBg: string; iconText: string }> = {
+	accent: { bar: "bg-accent", iconBg: "bg-accent/10", iconText: "text-accent" },
+	warm: { bar: "bg-warm-500", iconBg: "bg-warm-500/10", iconText: "text-warm-500" },
+	trust: { bar: "bg-trust-500", iconBg: "bg-trust-500/10", iconText: "text-trust-500" },
+};
+---
+
+<section id="services" class="py-28 px-6 bg-navy-50 dark:bg-navy-900">
+	<div class="mx-auto max-w-5xl">
+		<p class="text-accent text-sm font-medium tracking-widest uppercase mb-3">Services</p>
+		<h2 class="text-2xl md:text-3xl font-bold text-navy-900 dark:text-navy-100 mb-4">相談内容ごとに、前進の形を用意しています</h2>
+		<p class="max-w-3xl text-sm md:text-base text-navy-600 dark:text-navy-400 mb-12">
+			構成レビュー、登壇・研修、技術広報支援。それぞれで、持ち帰れる判断材料と次の一手が変わる前提で設計しています。
+		</p>
+		<div class="grid md:grid-cols-3 gap-6">
+			{services.map((service) => {
+				const colors = colorMap[service.color];
+				return (
+					<div class={`group relative bg-white dark:bg-navy-800 border border-navy-200 dark:border-navy-700 rounded-2xl p-8 transition-all duration-300 hover:shadow-lg hover:-translate-y-1 overflow-hidden flex flex-col`}>
+						<div class={`absolute top-0 left-0 right-0 h-1 ${colors.bar} transition-all duration-300 group-hover:h-1.5`}></div>
+						<div class={`w-12 h-12 rounded-xl ${colors.iconBg} flex items-center justify-center mb-5 ${colors.iconText}`} set:html={service.icon}></div>
+						<h3 class="text-lg font-semibold text-navy-900 dark:text-navy-100 mb-2">
+							{service.title}
+						</h3>
+						<p class="text-xs text-navy-500 dark:text-navy-400 mb-3 font-medium">{service.audience}</p>
+						<ul class="space-y-2 text-sm text-navy-600 dark:text-navy-400 mb-4">
+							{service.items.map((item) => (
+								<li class="flex items-start gap-2">
+									<span class={`mt-0.5 shrink-0 ${colors.iconText}`}>—</span>
+									<span>{item}</span>
+								</li>
+							))}
+						</ul>
+						<p class="text-sm text-navy-800 dark:text-navy-200 font-medium mb-6 mt-auto border-t border-navy-100 dark:border-navy-700 pt-4">
+							{service.outcome}
+						</p>
+						<a
+							href={service.ctaHref}
+							class={`inline-flex items-center gap-1 text-sm font-medium ${colors.iconText} hover:underline`}
+						>
+							{service.cta} →
+						</a>
+					</div>
+				);
+			})}
+		</div>
+	</div>
+</section>

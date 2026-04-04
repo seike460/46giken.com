@@ -16,7 +16,7 @@ interface Props {
 
 const {
 	title = `${siteIdentity.personName} | ${siteIdentity.siteName}`,
-	description = `${siteIdentity.personName} (${siteIdentity.handle}) の公式プロフィール。サーバーレス、可観測性、設計、技術発信の実績を公開情報ベースで整理しています。`,
+	description = `AWS Serverless の構成レビュー、Observability 導入、登壇・研修を支援するヨンロク技研。${siteIdentity.personName} (${siteIdentity.handle}) が構成の迷いを言語化し、次の設計判断を明確にします。`,
 	ogImage = "/og/cover.png",
 	ogAlt = `${siteIdentity.personName} / ${siteIdentity.role}`,
 	jsonLd = [],
@@ -72,6 +72,50 @@ const mergedJsonLd = [...baseJsonLd, ...jsonLd];
 			本文へ移動
 		</a>
 		<slot />
+
+		<!-- Floating CTA -->
+		<a
+			id="floating-cta"
+			href="https://forms.gle/eH22tCcq6K8RYPBUA"
+			target="_blank"
+			rel="noopener noreferrer"
+			class="fixed bottom-6 right-6 z-40 flex items-center gap-2 rounded-full bg-accent px-5 py-3 text-sm font-semibold text-white shadow-lg shadow-accent/25 transition-all duration-300 hover:bg-accent-dark hover:shadow-accent/40 translate-y-20 opacity-0 pointer-events-none"
+			aria-label="構成レビューを相談する"
+		>
+			<svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" /></svg>
+			構成レビュー相談
+		</a>
+
+		<script is:inline>
+			if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+				const observer = new IntersectionObserver((entries) => {
+					entries.forEach(e => {
+						if (e.isIntersecting) {
+							e.target.classList.add('is-visible');
+							observer.unobserve(e.target);
+						}
+					});
+				}, { threshold: 0.1 });
+				document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+			} else {
+				document.querySelectorAll('.reveal').forEach(el => el.classList.add('is-visible'));
+			}
+
+			// Floating CTA: show after hero scrolls out, or immediately on non-hero pages
+			var cta = document.getElementById('floating-cta');
+			var hero = document.querySelector('[data-hero]');
+			if (cta && hero) {
+				var ctaIo = new IntersectionObserver(function(entries) {
+					var visible = entries[0].isIntersecting;
+					cta.classList.toggle('translate-y-20', visible);
+					cta.classList.toggle('opacity-0', visible);
+					cta.classList.toggle('pointer-events-none', visible);
+				});
+				ctaIo.observe(hero);
+			} else if (cta) {
+				cta.classList.remove('translate-y-20', 'opacity-0', 'pointer-events-none');
+			}
+		</script>
 	</body>
 </html>
 

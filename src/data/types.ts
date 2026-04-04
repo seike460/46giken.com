@@ -32,7 +32,7 @@ export interface Talk {
 	title: string;
 	event: string;
 	date: string;
-	theme: "Serverless" | "Observability" | "Architecture" | "AI / API";
+	theme: "Serverless" | "Observability" | "Architecture" | "AI / API" | "PHP / Web" | "Community";
 	summary: string;
 	href: string;
 	proofUrl?: string;
