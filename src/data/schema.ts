@@ -25,6 +25,7 @@ export const baseJsonLd = [
 		"@context": "https://schema.org",
 		"@type": "Organization",
 		name: siteIdentity.siteName,
+		alternateName: siteIdentity.siteNameEn,
 		url: "https://46giken.com",
 		founder: {
 			"@type": "Person",
