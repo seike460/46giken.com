@@ -2,6 +2,7 @@ import type { Credential, ExternalLink } from "./types";
 
 export const siteIdentity = {
 	siteName: "ヨンロク技研",
+	siteNameEn: "YONROKU GIKEN",
 	personName: "清家史郎",
 	handle: "@seike460",
 	role: "株式会社Fusic プリンシパルエンジニア / エバンジェリスト",
