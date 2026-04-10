@@ -1,0 +1,75 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import Header from "../../components/Header.astro";
+import Footer from "../../components/Footer.astro";
+
+const rows = [
+	{ label: "屋号", value: "ヨンロク技研（YONROKU GIKEN）" },
+	{ label: "代表者", value: "清家史郎" },
+	{ label: "所在地", value: "福岡県筑紫野市" },
+	{
+		label: "連絡先",
+		value: "お問い合わせフォーム",
+		href: "https://forms.gle/eH22tCcq6K8RYPBUA",
+	},
+	{
+		label: "事業内容",
+		value: "AWS Serverless を前提とした構成レビュー・技術アドバイザリー、登壇・研修、技術広報支援",
+	},
+	{
+		label: "サービス料金",
+		value: "構成レビュー 30,000円〜/回、登壇・研修 50,000円〜、技術広報支援 50,000円〜/月（いずれも税別・個別見積もり）",
+	},
+	{ label: "支払方法", value: "銀行振込（請求書払い）" },
+	{
+		label: "支払時期",
+		value: "サービス提供後、請求書発行から30日以内",
+	},
+	{
+		label: "対応エリア",
+		value: "全国対応（渡航費・宿泊費は実費にてご請求）",
+	},
+	{
+		label: "キャンセルポリシー",
+		value: "実施 3 営業日前まで無料。以降はキャンセル料が発生する場合があります。",
+	},
+];
+---
+
+<BaseLayout
+	title="特定商取引法に基づく表記 | ヨンロク技研"
+	description="ヨンロク技研の特定商取引法に基づく表記。事業者情報、サービス料金、支払条件、キャンセルポリシーをご確認いただけます。"
+>
+	<Header currentPath="/legal/" />
+	<main id="content" class="py-28 px-6">
+		<div class="mx-auto max-w-3xl">
+			<p class="text-accent text-sm font-medium tracking-widest uppercase mb-3">Legal</p>
+			<h1 class="text-2xl md:text-3xl font-bold text-navy-900 dark:text-navy-100 mb-10">
+				特定商取引法に基づく表記
+			</h1>
+
+			<dl class="divide-y divide-navy-200 dark:divide-navy-700">
+				{rows.map((row) => (
+					<div class="py-5 sm:grid sm:grid-cols-3 sm:gap-4">
+						<dt class="text-sm font-semibold text-navy-900 dark:text-navy-100">{row.label}</dt>
+						<dd class="mt-1 text-sm text-navy-600 dark:text-navy-400 sm:col-span-2 sm:mt-0">
+							{row.href ? (
+								<a
+									href={row.href}
+									target="_blank"
+									rel="noopener noreferrer"
+									class="text-accent hover:underline"
+								>
+									{row.value} ↗
+								</a>
+							) : (
+								row.value
+							)}
+						</dd>
+					</div>
+				))}
+			</dl>
+		</div>
+	</main>
+	<Footer />
+</BaseLayout>
