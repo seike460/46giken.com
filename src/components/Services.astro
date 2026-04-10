@@ -9,6 +9,10 @@ const services = [
 			"Lambda / Step Functions / EventBridge などの選定レビュー",
 			"Observability を含む移行ステップの整理",
 		],
+		deliverable: "相談内容の整理と次のアクション案をまとめてお返しします",
+		format: "オンライン（60〜90分）",
+		price: "30,000円〜 / 回（税別）",
+		priceNote: "内容・規模により個別見積もり",
 		color: "accent",
 		cta: "構成レビューを相談する",
 		ctaHref: "#contact",
@@ -23,6 +27,10 @@ const services = [
 			"社内向け研修・ハンズオン",
 			"技術イベントやコミュニティ向けのゲスト登壇",
 		],
+		deliverable: "登壇スライド / 研修ではハンズオン資料・サンプルコード",
+		format: "オンライン・オフライン両対応（全国対応）",
+		price: "50,000円〜（税別）",
+		priceNote: "形式・拘束時間により個別見積もり / 渡航費・宿泊費は実費にてご請求",
 		color: "warm",
 		cta: "登壇・研修の詳細を見る",
 		ctaHref: "/speaking/",
@@ -37,6 +45,10 @@ const services = [
 			"記事・スライド・登壇企画の整理",
 			"イベント登壇の企画相談",
 		],
+		deliverable: "発信テーマと次のアクションを整理してお返しします",
+		format: "オンライン / 月額顧問型",
+		price: "50,000円〜 / 月（税別）",
+		priceNote: "内容・規模により個別見積もり",
 		color: "trust",
 		cta: "技術広報を相談する",
 		ctaHref: "#contact",
@@ -77,6 +89,12 @@ const colorMap: Record<string, { bar: string; iconBg: string; iconText: string }
 								</li>
 							))}
 						</ul>
+						<div class="mb-4 space-y-1 text-xs text-navy-500 dark:text-navy-400">
+							<p><span class="font-medium text-navy-700 dark:text-navy-300">成果物:</span> {service.deliverable}</p>
+							<p><span class="font-medium text-navy-700 dark:text-navy-300">形式:</span> {service.format}</p>
+							<p class={`mt-2 text-sm font-semibold ${colors.iconText}`}>参考価格 {service.price}</p>
+							<p class="text-[11px]">※ {service.priceNote}</p>
+						</div>
 						<p class="text-sm text-navy-800 dark:text-navy-200 font-medium mb-6 mt-auto border-t border-navy-100 dark:border-navy-700 pt-4">
 							{service.outcome}
 						</p>

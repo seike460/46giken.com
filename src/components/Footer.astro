@@ -10,7 +10,9 @@ const links = [
 
 <footer class="py-8 px-6 border-t border-navy-200 dark:border-navy-800">
 	<div class="mx-auto max-w-5xl flex flex-col sm:flex-row items-center justify-between gap-4">
-		<p class="text-xs text-navy-500 dark:text-navy-400">&copy; 2026 ヨンロク技研</p>
+		<p class="text-xs text-navy-500 dark:text-navy-400">
+			&copy; 2026 ヨンロク技研 ・ 最終更新 {new Date().toLocaleDateString("ja-JP", { year: "numeric", month: "long" })}
+		</p>
 		<div class="flex flex-wrap gap-4">
 			{links.map((link) => (
 				<a
@@ -22,6 +24,12 @@ const links = [
 					{link.label} ↗
 				</a>
 			))}
+			<a
+				href="/legal/"
+				class="text-xs text-navy-500 dark:text-navy-400 hover:text-accent transition-colors"
+			>
+				特定商取引法に基づく表記
+			</a>
 		</div>
 	</div>
 </footer>
