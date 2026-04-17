@@ -1,26 +1,26 @@
 ---
-const contactUrl = "https://forms.gle/eH22tCcq6K8RYPBUA";
+const API_URL = "https://api.46giken.com/inquiries";
 
 const intents = [
 	{
+		value: "構成レビュー",
 		title: "構成レビュー / 技術アドバイザリー",
 		description: "移行方針、サービス選定、Observability の整理など、設計判断を前に進めたいときに。",
 		points: ["現状の構成や課題", "迷っている論点", "判断したい期限"],
-		label: "構成レビューを相談する",
 		featured: true,
 	},
 	{
+		value: "登壇",
 		title: "登壇・研修",
 		description: "イベントや社内勉強会で、対象者に合わせたテーマと難易度で話してほしいときに。",
 		points: ["イベント名や社内研修の目的", "対象者", "話してほしいテーマ"],
-		label: "登壇・研修を相談する",
 		featured: false,
 	},
 	{
+		value: "技術広報",
 		title: "技術広報支援",
 		description: "発信テーマや媒体の選び方がぼやけていて、継続できる軸を作りたいときに。",
 		points: ["発信したい背景", "採用やブランドの狙い", "いま困っていること"],
-		label: "技術広報を相談する",
 		featured: false,
 	},
 ];
@@ -28,68 +28,215 @@ const intents = [
 
 <section id="contact" class="py-28 px-6">
 	<div class="mx-auto max-w-5xl">
-		<div class="rounded-2xl bg-gradient-to-br from-navy-900 via-navy-800 to-navy-900 dark:from-navy-800 dark:via-navy-900 dark:to-navy-800 p-10 md:p-14 text-center relative overflow-hidden">
-			<!-- Subtle glow -->
+		<div class="rounded-2xl bg-gradient-to-br from-navy-900 via-navy-800 to-navy-900 dark:from-navy-800 dark:via-navy-900 dark:to-navy-800 p-10 md:p-14 relative overflow-hidden">
 			<div class="absolute top-0 right-0 w-[200px] h-[200px] rounded-full bg-accent/10 blur-[60px]"></div>
 
-			<p class="text-accent text-sm font-medium tracking-widest uppercase mb-3 relative">Contact</p>
-			<h2 class="text-2xl md:text-3xl font-bold text-white mb-4 relative">近い相談内容から、そのまま送れます</h2>
-			<p class="text-navy-400 mb-8 max-w-lg mx-auto relative">
-				背景と悩みを数行で構いません。内容を確認のうえ、通常2営業日以内に進め方をご返信します。
-			</p>
-			<div class="grid gap-4 text-left relative md:grid-cols-3">
-				{intents.map((intent) => (
-					<div class:list={[
-						"rounded-2xl p-6 backdrop-blur-sm",
-						intent.featured
-							? "border border-white/25 bg-white text-navy-900"
-							: "border border-white/10 bg-white/5 text-white",
-					]}>
-						<p class:list={[
-							"text-xs font-semibold uppercase tracking-[0.2em] mb-3",
-							intent.featured ? "text-accent-dark" : "text-accent",
-						]}>
-							{intent.title}
-						</p>
-						<p class:list={[
-							"text-sm leading-7 mb-5",
-							intent.featured ? "text-navy-700" : "text-navy-300",
-						]}>
-							{intent.description}
-						</p>
-						<p class:list={[
-							"text-xs font-semibold uppercase tracking-[0.16em] mb-3",
-							intent.featured ? "text-navy-500" : "text-navy-500",
-						]}>
-							送っていただきたいこと
-						</p>
-						<ul class:list={[
-							"space-y-2 text-sm mb-6",
-							intent.featured ? "text-navy-700" : "text-navy-200",
-						]}>
-							{intent.points.map((point) => (
-								<li class="flex items-start gap-2">
-									<span class="mt-0.5 text-accent">•</span>
-									<span>{point}</span>
-								</li>
-							))}
-						</ul>
-						<a
-							href={contactUrl}
-							target="_blank"
-							rel="noopener noreferrer"
+			<div class="text-center relative">
+				<p class="text-accent text-sm font-medium tracking-widest uppercase mb-3">Contact</p>
+				<h2 class="text-2xl md:text-3xl font-bold text-white mb-4">近い相談内容から、そのまま送れます</h2>
+				<p class="text-navy-400 mb-8 max-w-lg mx-auto">
+					背景と悩みを数行で構いません。内容を確認のうえ、通常2営業日以内に進め方をご返信します。
+				</p>
+			</div>
+
+			<form id="contact-form" class="relative space-y-6" novalidate>
+				<!-- Intent picker (radio buttons styled as cards) -->
+				<fieldset class="grid gap-4 md:grid-cols-3">
+					<legend class="sr-only">ご依頼内容</legend>
+					{intents.map((intent, i) => (
+						<label
 							class:list={[
-								"inline-flex items-center justify-center gap-2 rounded-full px-5 py-3 text-sm font-semibold transition-all duration-300 hover:scale-[1.02]",
+								"rounded-2xl p-6 backdrop-blur-sm cursor-pointer transition-all duration-200 block",
+								"has-[:checked]:ring-2 has-[:checked]:ring-accent",
 								intent.featured
-									? "bg-accent text-white hover:bg-accent-dark"
-									: "border border-white/20 text-white hover:border-white/40",
+									? "border border-white/25 bg-white text-navy-900 has-[:checked]:bg-white"
+									: "border border-white/10 bg-white/5 text-white has-[:checked]:bg-white/10",
 							]}
 						>
-							{intent.label}
-						</a>
-					</div>
-				))}
-			</div>
+							<input
+								type="radio"
+								name="serviceType"
+								value={intent.value}
+								required
+								checked={i === 0}
+								class="sr-only peer"
+							/>
+							<p class:list={[
+								"text-xs font-semibold uppercase tracking-[0.2em] mb-3",
+								intent.featured ? "text-accent-dark" : "text-accent",
+							]}>
+								{intent.title}
+							</p>
+							<p class:list={[
+								"text-sm leading-7 mb-5",
+								intent.featured ? "text-navy-700" : "text-navy-300",
+							]}>
+								{intent.description}
+							</p>
+							<p class="text-xs font-semibold uppercase tracking-[0.16em] mb-3 text-navy-500">
+								送っていただきたいこと
+							</p>
+							<ul class:list={[
+								"space-y-2 text-sm",
+								intent.featured ? "text-navy-700" : "text-navy-200",
+							]}>
+								{intent.points.map((point) => (
+									<li class="flex items-start gap-2">
+										<span class="mt-0.5 text-accent">•</span>
+										<span>{point}</span>
+									</li>
+								))}
+							</ul>
+						</label>
+					))}
+				</fieldset>
+
+				<!-- Form fields -->
+				<div class="grid gap-5 md:grid-cols-2">
+					<label class="block">
+						<span class="block text-xs font-semibold uppercase tracking-[0.16em] text-navy-400 mb-2">お名前 / 会社名</span>
+						<input
+							type="text"
+							name="customerName"
+							required
+							maxlength="200"
+							autocomplete="organization"
+							class="w-full rounded-xl bg-white/5 border border-white/15 px-4 py-3 text-white placeholder:text-navy-500 focus:outline-none focus:ring-2 focus:ring-accent focus:border-transparent transition"
+							placeholder="株式会社 〇〇 / 清家 太郎"
+						/>
+					</label>
+					<label class="block">
+						<span class="block text-xs font-semibold uppercase tracking-[0.16em] text-navy-400 mb-2">Email</span>
+						<input
+							type="email"
+							name="email"
+							required
+							autocomplete="email"
+							class="w-full rounded-xl bg-white/5 border border-white/15 px-4 py-3 text-white placeholder:text-navy-500 focus:outline-none focus:ring-2 focus:ring-accent focus:border-transparent transition"
+							placeholder="you@example.com"
+						/>
+					</label>
+				</div>
+
+				<label class="block">
+					<span class="block text-xs font-semibold uppercase tracking-[0.16em] text-navy-400 mb-2">ご相談内容</span>
+					<textarea
+						name="message"
+						required
+						maxlength="5000"
+						rows="6"
+						class="w-full rounded-xl bg-white/5 border border-white/15 px-4 py-3 text-white placeholder:text-navy-500 focus:outline-none focus:ring-2 focus:ring-accent focus:border-transparent transition resize-y"
+						placeholder="背景・困りごと・判断したい期限などを数行で。"
+					></textarea>
+				</label>
+
+				<!-- Honeypot: 人間には見えないボット対策フィールド -->
+				<div class="honeypot" aria-hidden="true">
+					<label>
+						Website (Do not fill in)
+						<input type="text" name="website" tabindex="-1" autocomplete="off" value="" />
+					</label>
+				</div>
+
+				<div class="flex flex-col items-center gap-4 pt-2">
+					<button
+						type="submit"
+						id="submit-btn"
+						class="inline-flex items-center justify-center gap-2 rounded-full bg-accent text-white hover:bg-accent-dark disabled:opacity-60 disabled:cursor-not-allowed px-8 py-3 text-sm font-semibold transition-all duration-300 hover:scale-[1.02]"
+					>
+						<span class="btn-label">送信する</span>
+						<svg class="btn-spinner hidden animate-spin h-4 w-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+							<circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+							<path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v4a4 4 0 00-4 4H4z"></path>
+						</svg>
+					</button>
+					<p id="result" role="status" aria-live="polite" class="text-sm text-navy-300 whitespace-pre-wrap min-h-5"></p>
+				</div>
+			</form>
 		</div>
 	</div>
 </section>
+
+<script is:inline define:vars={{ API_URL }}>
+	// フォーム表示時刻 (bot 判定用: submit までが 1 秒未満 = bot)
+	const formStartMs = Date.now();
+
+	const form = document.getElementById("contact-form");
+	const submitBtn = document.getElementById("submit-btn");
+	const result = document.getElementById("result");
+	const spinner = submitBtn.querySelector(".btn-spinner");
+	const label = submitBtn.querySelector(".btn-label");
+
+	function setLoading(loading) {
+		submitBtn.disabled = loading;
+		if (loading) {
+			spinner.classList.remove("hidden");
+			label.textContent = "送信中…";
+		} else {
+			spinner.classList.add("hidden");
+			label.textContent = "送信する";
+		}
+	}
+
+	form.addEventListener("submit", async (e) => {
+		e.preventDefault();
+		setLoading(true);
+		result.textContent = "";
+
+		const fd = new FormData(form);
+		const body = {
+			customerName: fd.get("customerName"),
+			email: fd.get("email"),
+			serviceType: fd.get("serviceType"),
+			message: fd.get("message"),
+			website: fd.get("website") || "",
+			formStartMs,
+		};
+
+		try {
+			const res = await fetch(API_URL, {
+				method: "POST",
+				headers: {
+					"Content-Type": "application/json",
+					"X-Client-Submit-Start": String(formStartMs),
+				},
+				body: JSON.stringify(body),
+			});
+			const data = await res.json().catch(() => ({}));
+
+			if (res.status === 201) {
+				// caseId === "pending" は server 側 bot 判定による silent-reject だが、
+				// UX / 情報漏洩防止のため正常成功と同じ表示にする
+				result.textContent = `${data.message ?? "お問い合わせを受け付けました。"}${data.caseId && data.caseId !== "pending" ? `\n受付番号: ${data.caseId}` : ""}`;
+				result.className = result.className.replace(/text-(red|navy|emerald)-\d+/g, "") + " text-emerald-300";
+				form.reset();
+			} else if (res.status === 429) {
+				result.textContent = "混み合っています。しばらく待ってからお試しください。";
+				result.className = result.className.replace(/text-(red|navy|emerald)-\d+/g, "") + " text-red-300";
+			} else if (res.status === 400 && data.fields) {
+				const lines = Object.entries(data.fields).map(([k, v]) => `${k}: ${v}`);
+				result.textContent = `入力エラー\n${lines.join("\n")}`;
+				result.className = result.className.replace(/text-(red|navy|emerald)-\d+/g, "") + " text-red-300";
+			} else {
+				result.textContent = data.error ?? "送信に失敗しました。時間をおいて再度お試しください。";
+				result.className = result.className.replace(/text-(red|navy|emerald)-\d+/g, "") + " text-red-300";
+			}
+		} catch (err) {
+			result.textContent = "ネットワークエラー。通信状況をご確認のうえ再度お試しください。";
+			result.className = result.className.replace(/text-(red|navy|emerald)-\d+/g, "") + " text-red-300";
+		} finally {
+			setLoading(false);
+		}
+	});
+</script>
+
+<style>
+	/* 人間には完全非表示のハニーポット */
+	.honeypot {
+		position: absolute;
+		left: -10000px;
+		width: 1px;
+		height: 1px;
+		overflow: hidden;
+	}
+</style>
