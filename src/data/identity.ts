@@ -11,7 +11,7 @@ export const siteIdentity = {
 	intro:
 		"Everything Will Be Serverless を軸に、AWS Serverless の設計レビューと Observability 導入を支援しています。必要に応じて登壇・研修まで伴走します。",
 	philosophy: "",
-	contactUrl: "https://forms.gle/eH22tCcq6K8RYPBUA",
+	contactUrl: "/#contact",
 	sameAs: [
 		"https://github.com/seike460",
 		"https://speakerdeck.com/seike460",
