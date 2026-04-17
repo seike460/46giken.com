@@ -54,14 +54,20 @@ const rows = [
 						<dt class="text-sm font-semibold text-navy-900 dark:text-navy-100">{row.label}</dt>
 						<dd class="mt-1 text-sm text-navy-600 dark:text-navy-400 sm:col-span-2 sm:mt-0">
 							{row.href ? (
-								<a
-									href={row.href}
-									target="_blank"
-									rel="noopener noreferrer"
-									class="text-accent hover:underline"
-								>
-									{row.value} ↗
-								</a>
+								row.href.startsWith("/") ? (
+									<a href={row.href} class="text-accent hover:underline">
+										{row.value}
+									</a>
+								) : (
+									<a
+										href={row.href}
+										target="_blank"
+										rel="noopener noreferrer"
+										class="text-accent hover:underline"
+									>
+										{row.value} ↗
+									</a>
+								)
 							) : (
 								row.value
 							)}
