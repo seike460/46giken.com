@@ -36,4 +36,10 @@ export const timeline: TimelineEntry[] = [
 		body: "AWS コミュニティ最大規模のイベントを実行委員長として運営。",
 		showOnTop: true,
 	},
+	{
+		year: "2026",
+		title: "技術コミュニティ統括室長に就任、海外カンファレンス登壇へ拡大",
+		body: "株式会社Fusic 技術コミュニティ統括室長 / シニアエバンジェリスト / プリンシパルエンジニアに就任。AWS Ambassador に選出され、AWS Summit Hong Kong 2026 など英語登壇を展開。",
+		showOnTop: true,
+	},
 ];
