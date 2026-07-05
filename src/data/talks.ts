@@ -48,12 +48,14 @@ export const talks: Talk[] = [
 	},
 	// --- 2025 ---
 	{
-		title: "AWS Community Day Hong Kong 2025 英語登壇",
+		title:
+			"Team-First Serverless Platform Engineering Approach to PHP Applications with Laravel and Bref",
 		event: "AWS Community Day Hong Kong 2025",
 		date: "2025-11-02",
-		theme: "Community",
-		summary: "参加者350名超の AWS Community Day Hong Kong での英語登壇。",
-		href: "https://speakerdeck.com/seike460",
+		theme: "Serverless",
+		summary:
+			"Laravel と Bref を用いたサーバーレスPHPのプラットフォームエンジニアリングをチーム視点で解説した英語登壇（参加者350名超）。",
+		href: "https://speakerdeck.com/seike460/team-first-serverless-platform-engineering-approach-to-php-applications-with-laravel-and-bref",
 	},
 	{
 		title: "OpenTelemetryを活用したObservability入門",
@@ -353,3 +355,11 @@ export const talkThemes = [
 	"PHP / Web",
 	"Community",
 ] as const;
+
+export const parseTalkDate = (date: string): Date => {
+	if (/^\d{4}$/.test(date)) return new Date(`${date}-07-01`);
+	return new Date(date);
+};
+
+export const isUpcomingTalk = (talk: Talk, now: Date = new Date()): boolean =>
+	parseTalkDate(talk.date) > now;
