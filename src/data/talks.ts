@@ -3,6 +3,34 @@ import type { Talk } from "./types";
 export const talks: Talk[] = [
 	// --- 2026 ---
 	{
+		title:
+			"Seeing Through Serverless: Observability for AWS Lambda with ADOT and CloudWatch Application Signals",
+		event: "AWS Community Day Singapore 2026",
+		date: "2026-08-22",
+		theme: "Observability",
+		summary: "ADOT と CloudWatch Application Signals による AWS Lambda の可観測性を扱う英語登壇。",
+		href: "https://speakerdeck.com/seike460",
+	},
+	{
+		title: "コミュニティの有益性 〜JAWS DAYS 2026 での体験を通して〜",
+		event: "AWS Summit Japan 2026",
+		date: "2026-06-25",
+		theme: "Community",
+		summary:
+			"JAWS DAYS 2026 実行委員長としての体験から、コミュニティの有益性を整理したセッション。",
+		href: "https://speakerdeck.com/seike460",
+		featured: true,
+	},
+	{
+		title: "Architecture as Steering: On-Ramp to AI-DLC",
+		event: "AWS Summit Hong Kong 2026",
+		date: "2026-06-17",
+		theme: "Architecture",
+		summary: "AI-DLC 時代におけるアーキテクチャの役割を扱った英語登壇。",
+		href: "https://speakerdeck.com/seike460",
+		featured: true,
+	},
+	{
 		title: "テレメトリーシグナルが導くパフォーマンス最適化",
 		event: "PHPerKaigi 2026",
 		date: "2026-03-20",
@@ -19,6 +47,16 @@ export const talks: Talk[] = [
 		href: "https://speakerdeck.com/seike460",
 	},
 	// --- 2025 ---
+	{
+		title:
+			"Team-First Serverless Platform Engineering Approach to PHP Applications with Laravel and Bref",
+		event: "AWS Community Day Hong Kong 2025",
+		date: "2025-11-02",
+		theme: "Serverless",
+		summary:
+			"Laravel と Bref を用いたサーバーレスPHPのプラットフォームエンジニアリングをチーム視点で解説した英語登壇（参加者350名超）。",
+		href: "https://speakerdeck.com/seike460/team-first-serverless-platform-engineering-approach-to-php-applications-with-laravel-and-bref",
+	},
 	{
 		title: "OpenTelemetryを活用したObservability入門",
 		event: "PHPerKaigi 2025",
@@ -317,3 +355,11 @@ export const talkThemes = [
 	"PHP / Web",
 	"Community",
 ] as const;
+
+export const parseTalkDate = (date: string): Date => {
+	if (/^\d{4}$/.test(date)) return new Date(`${date}-07-01`);
+	return new Date(date);
+};
+
+export const isUpcomingTalk = (talk: Talk, now: Date = new Date()): boolean =>
+	parseTalkDate(talk.date) > now;

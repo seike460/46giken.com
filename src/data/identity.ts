@@ -5,7 +5,7 @@ export const siteIdentity = {
 	siteNameEn: "YONROKU GIKEN",
 	personName: "清家史郎",
 	handle: "@seike460",
-	role: "株式会社Fusic プリンシパルエンジニア / エバンジェリスト",
+	role: "株式会社Fusic 技術コミュニティ統括室長 / シニアエバンジェリスト / プリンシパルエンジニア",
 	location: "Fukuoka, Japan",
 	summary: "AWS Serverless と Observability を軸に、構成レビュー、登壇、技術発信を行うエンジニア。",
 	intro:
@@ -33,6 +33,11 @@ export const heroCredentials: Credential[] = [
 		detail: "Services category",
 	},
 	{
+		title: "AWS Ambassador",
+		detail: "株式会社Fusic",
+		period: "2026",
+	},
+	{
 		title: "AWS Community Builder",
 		detail: "Serverless",
 		period: "2023-2025",
@@ -57,7 +62,12 @@ export const heroCredentials: Credential[] = [
 export const profileCredentials: Credential[] = [
 	{
 		title: "株式会社Fusic",
-		detail: "プリンシパルエンジニア / エバンジェリスト",
+		detail: "技術コミュニティ統括室長 / シニアエバンジェリスト / プリンシパルエンジニア",
+	},
+	{
+		title: "AWS Ambassador",
+		detail: "AWS Ambassador Program に選出",
+		period: "2026",
 	},
 	{
 		title: "2025 Japan AWS Top Engineers",
@@ -67,16 +77,16 @@ export const profileCredentials: Credential[] = [
 			"https://speakerdeck.com/seike460/why-apply-migrate-and-understand-clean-architecture-inherit-design-beyond-structure",
 	},
 	{
+		title: "JAWS DAYS 2026",
+		detail: "実行委員長",
+		period: "2026",
+	},
+	{
 		title: "AWS Community Builder",
 		detail: "Serverless 分野で継続参加",
 		period: "2023-2025",
 		sourceUrl:
 			"https://speakerdeck.com/seike460/introduction-to-api-development-with-a-focus-on-openapi",
-	},
-	{
-		title: "JAWS DAYS 2026",
-		detail: "実行委員長",
-		period: "2026",
 	},
 	{
 		title: "PHPカンファレンス福岡 2023",

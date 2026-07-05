@@ -1,20 +1,15 @@
 ---
-import { talks } from "../data/talks";
-
-const parseDate = (d: string) => {
-	if (/^\d{4}$/.test(d)) return new Date(`${d}-07-01`);
-	return new Date(d);
-};
+import { parseTalkDate, talks } from "../data/talks";
 
 const now = new Date();
 const recentTalks = talks
-	.filter((t) => parseDate(t.date) <= now)
-	.sort((a, b) => parseDate(b.date).getTime() - parseDate(a.date).getTime())
+	.filter((t) => parseTalkDate(t.date) <= now)
+	.sort((a, b) => parseTalkDate(b.date).getTime() - parseTalkDate(a.date).getTime())
 	.slice(0, 3);
 
 const upcomingTalks = talks
-	.filter((t) => parseDate(t.date) > now)
-	.sort((a, b) => parseDate(a.date).getTime() - parseDate(b.date).getTime())
+	.filter((t) => parseTalkDate(t.date) > now)
+	.sort((a, b) => parseTalkDate(a.date).getTime() - parseTalkDate(b.date).getTime())
 	.slice(0, 2);
 
 const consultationExamples = [
@@ -33,6 +28,8 @@ const stats = [
 ];
 
 const conferences = [
+	"AWS Summit",
+	"AWS Community Day",
 	"ServerlessDays Tokyo",
 	"AWS Dev Day Japan",
 	"JAWS DAYS",

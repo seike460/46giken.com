@@ -1,4 +1,6 @@
 ---
+import { siteIdentity } from "../data/identity";
+
 const focusAreas = [
 	{
 		title: "Serverless",
@@ -23,6 +25,7 @@ const focusAreas = [
 ];
 
 const credentials = [
+	"AWS Ambassador (2026)",
 	"AWS Community Builder (Serverless)",
 	"2025 Japan AWS Top Engineers (Services)",
 	"JAWS-UG Fukuoka オーガナイザー",
@@ -36,7 +39,7 @@ const credentials = [
 
 		<div class="space-y-4 text-navy-700 dark:text-navy-300 mb-10">
 			<p class="text-sm text-navy-500 dark:text-navy-400">
-				清家史郎 / ヨンロク技研 代表 / 株式会社Fusic プリンシパルエンジニア・エバンジェリスト
+				清家史郎 / ヨンロク技研 代表 / {siteIdentity.role}
 			</p>
 			<p>
 				サーバーレスを流行語としてではなく、設計上の選択肢として扱います。AWS Serverless の構成レビュー、Observability の導入、登壇や技術発信まで、複雑な技術を「進められる判断」に変えるのが役割です。
