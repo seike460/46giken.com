@@ -6,11 +6,15 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
 const rows = [
 	{ label: "屋号", value: "ヨンロク技研（YONROKU GIKEN）" },
 	{ label: "代表者", value: "清家史郎" },
-	{ label: "所在地", value: "福岡県筑紫野市" },
 	{
 		label: "連絡先",
 		value: "お問い合わせフォーム",
 		href: "/#contact",
+	},
+	{
+		label: "対象",
+		value:
+			"法人、個人事業主その他の事業者の方が、自己の営業のため、または営業として利用される場合に限りご提供します。個人の私的なご利用を目的としたお申し込みは承っておりません。",
 	},
 	{
 		label: "事業内容",
@@ -19,35 +23,50 @@ const rows = [
 	{
 		label: "サービス料金",
 		value:
-			"構成レビュー 30,000円〜/回、登壇・研修 50,000円〜、技術広報支援 50,000円〜/月（いずれも税別・個別見積もり）",
+			"構成レビュー 30,000円〜/回、登壇・研修 50,000円〜、技術広報支援 50,000円〜/月（いずれも税別）。内容と規模をうかがったうえで個別にお見積もりします。",
+	},
+	{
+		label: "料金以外に必要な費用",
+		value:
+			"オフラインで対応する場合の交通費と宿泊費を、実費にてご請求します。対象となる費目と金額は、事前にお見積もりへ含めてご確認いただきます。",
+	},
+	{
+		label: "契約の成立と提供時期",
+		value:
+			"お申し込みの内容とお見積もりにご同意いただいた時点で契約が成立します。その後、日程を調整のうえ提供します。",
 	},
 	{ label: "支払方法", value: "銀行振込（請求書払い）" },
 	{
 		label: "支払時期",
-		value: "サービス提供後、請求書発行から30日以内",
+		value:
+			"構成レビューおよび登壇・研修は、提供後に請求書を発行します。技術広報支援は、契約時に定める周期で請求書を発行します。いずれも発行日から30日以内にお支払いください。",
 	},
 	{
 		label: "対応エリア",
-		value: "全国対応（交通費・宿泊費は実費にてご請求）",
+		value: "全国（オンラインでの対応も可能です）",
 	},
 	{
-		label: "キャンセルポリシー",
-		value: "実施 3 営業日前まで無料。以降はキャンセル料が発生する場合があります。",
+		label: "キャンセル",
+		value:
+			"構成レビューおよび登壇・研修は、実施日の3営業日前までのお申し出であれば無料です。それ以降のお申し出については、キャンセル料の有無と金額を見積書または契約書に記載し、契約時にあらかじめ合意します。技術広報支援の解約予告期間は、契約時に定めます。",
 	},
 ];
 ---
 
 <BaseLayout
-	title="特定商取引法に基づく表記 | ヨンロク技研"
-	description="ヨンロク技研の特定商取引法に基づく表記。事業者情報、サービス料金、支払条件、キャンセルポリシーをご確認いただけます。"
+	title="取引条件のご案内 | ヨンロク技研"
+	description="ヨンロク技研の取引条件。対象となるお客さま、サービス料金、契約と支払の条件、キャンセルの取り扱いをご確認いただけます。"
 >
 	<Header currentPath="/legal/" />
 	<main id="content" class="py-28 px-6">
 		<div class="mx-auto max-w-3xl">
-			<p class="text-accent text-sm font-medium tracking-widest uppercase mb-3">Legal</p>
-			<h1 class="text-2xl md:text-3xl font-bold text-navy-900 dark:text-navy-100 mb-10">
-				特定商取引法に基づく表記
+			<p class="text-accent text-sm font-medium tracking-widest uppercase mb-3">Terms</p>
+			<h1 class="text-2xl md:text-3xl font-bold text-navy-900 dark:text-navy-100 mb-4">
+				取引条件のご案内
 			</h1>
+			<p class="text-sm text-navy-600 dark:text-navy-400 mb-10">
+				ヨンロク技研が提供するサービスの取引条件をご案内します。いずれのサービスも、事業者の方が自己の営業のため、または営業としてご利用になる場合に限り提供する役務です。個人の私的なご利用は対象としておりません。
+			</p>
 
 			<dl class="divide-y divide-navy-200 dark:divide-navy-700">
 				{rows.map((row) => (
@@ -66,7 +85,8 @@ const rows = [
 										rel="noopener noreferrer"
 										class="text-accent hover:underline"
 									>
-										{row.value} ↗
+										{row.value}
+										<span aria-hidden="true"> ↗</span>
 									</a>
 								)
 							) : (
