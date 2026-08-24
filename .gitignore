@@ -1,5 +1,17 @@
 node_modules/
 dist/
 .astro/
+
+# ローカル作業用のメモ・調査記録（公開しない）
 Review.md
-seike460_achievements.md
+docs/
+.claude/
+
+# OS / エディタ
+.DS_Store
+*.local
+
+# 環境変数
+.env
+.env.*
+!.env.example

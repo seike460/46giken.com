@@ -20,11 +20,35 @@ const consultationExamples = [
 ];
 
 const stats = [
-	{ value: 94, suffix: "+", label: "Speaker Deck", sub: "公開スライド", href: "https://speakerdeck.com/seike460" },
-	{ value: 53, suffix: "+", label: "Public Repos", sub: "GitHub", href: "https://github.com/seike460" },
-	{ value: 135, suffix: "+", label: "Blog Posts", sub: "技術記事", href: "https://blog.seike460.com" },
-	{ value: 6, suffix: "冠", label: "AWS 認定", sub: "Certified", href: undefined },
-	{ value: 14, suffix: "+年", label: "コミュニティ", sub: "since 2012", href: undefined },
+	{
+		value: 104,
+		suffix: "",
+		label: "公開スライド",
+		sub: "Speaker Deck",
+		href: "https://speakerdeck.com/seike460",
+	},
+	{
+		value: 55,
+		suffix: "",
+		label: "公開リポジトリ",
+		sub: "GitHub",
+		href: "https://github.com/seike460",
+	},
+	{
+		value: 80,
+		suffix: "+",
+		label: "技術記事",
+		sub: "ブログ",
+		href: "https://blog.seike460.com",
+	},
+	{
+		value: 4,
+		suffix: "",
+		label: "AWS 認定",
+		sub: "現在有効",
+		href: "https://www.credly.com/users/seike460/badges",
+	},
+	{ value: 14, suffix: "年以上", label: "コミュニティ活動", sub: "2012年から", href: undefined },
 ];
 
 const conferences = [
@@ -36,6 +60,13 @@ const conferences = [
 	"PHPerKaigi",
 	"PHPカンファレンス福岡",
 	"Backlog World",
+	"JAWS FESTA",
+	"AWS CDK Conference Japan",
+	"Security-JAWS",
+	"CloudNative Days",
+	"ServerlessDays",
+	"Cloudflare Meetup",
+	"JBUG",
 	"Fusic Tech Live",
 ];
 ---
@@ -70,9 +101,10 @@ const conferences = [
 						<span data-target={stat.value} data-suffix={stat.suffix}>0</span>
 					</p>
 					<p class="text-xs text-navy-400 mt-1">{stat.label}</p>
+					<p class="text-[10px] text-navy-600 mt-0.5">{stat.sub}</p>
 					{stat.href && (
-						<a href={stat.href} target="_blank" rel="noopener noreferrer" class="text-[10px] text-navy-600 hover:text-accent transition-colors uppercase tracking-wider">
-							Source ↗
+						<a href={stat.href} target="_blank" rel="noopener noreferrer" class="text-[10px] text-navy-600 hover:text-accent transition-colors">
+							出典<span aria-hidden="true"> ↗</span>
 						</a>
 					)}
 				</div>

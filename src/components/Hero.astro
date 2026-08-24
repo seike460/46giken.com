@@ -1,4 +1,5 @@
 ---
+import { heroCredentials } from "../data/identity";
 ---
 
 <section data-hero class="relative min-h-[85vh] flex items-center px-6 bg-navy-900 dark:bg-navy-950 overflow-hidden">
@@ -23,7 +24,7 @@
 			AWS Serverless を前提に、構成レビューと技術アドバイザリーを提供しています。
 		</p>
 		<p class="text-base md:text-lg text-navy-300 mb-3 leading-relaxed">
-			移行方針、サービス選定、Observability の設計まで、<span class="whitespace-nowrap">技術責任者</span>や<span class="whitespace-nowrap">開発組織</span>が次の意思決定を切れる状態まで整理します。
+			移行方針、サービス選定、Observability の設計まで、<span class="whitespace-nowrap">技術責任者</span>や<span class="whitespace-nowrap">開発チーム</span>が次の意思決定に進める状態まで整理します。
 		</p>
 		<p class="text-sm text-navy-500 italic mb-10">
 			Everything Will Be Serverless
@@ -35,7 +36,7 @@
 				href="#contact"
 				class="inline-flex items-center gap-2 px-8 py-4 bg-gradient-to-r from-accent to-accent-light text-white font-semibold rounded-full shadow-lg shadow-accent/25 hover:shadow-accent/40 hover:scale-105 transition-all duration-300"
 			>
-				設計レビューを相談する
+				構成レビューを相談する
 				<svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" /></svg>
 			</a>
 			<a
@@ -55,22 +56,12 @@
 				</span>
 				現在ご相談を受け付けています
 			</span>
-			<span class="inline-flex items-center gap-1.5 px-3 py-1.5 bg-white/5 border border-white/10 rounded-full text-xs text-navy-300">
-				<svg class="w-3.5 h-3.5 text-accent" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" /></svg>
-				2025 Japan AWS Top Engineers
-			</span>
-			<span class="inline-flex items-center gap-1.5 px-3 py-1.5 bg-white/5 border border-white/10 rounded-full text-xs text-navy-300">
-				<svg class="w-3.5 h-3.5 text-accent" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
-				AWS Ambassador
-			</span>
-			<span class="inline-flex items-center gap-1.5 px-3 py-1.5 bg-white/5 border border-white/10 rounded-full text-xs text-navy-300">
-				<svg class="w-3.5 h-3.5 text-trust-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z" /></svg>
-				AWS Community Builder
-			</span>
-			<span class="inline-flex items-center gap-1.5 px-3 py-1.5 bg-white/5 border border-white/10 rounded-full text-xs text-navy-300">
-				<svg class="w-3.5 h-3.5 text-warm-400" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" /></svg>
-				JAWS DAYS 2026 実行委員長
-			</span>
+			{heroCredentials.slice(0, 4).map((cred) => (
+				<span class="inline-flex items-center gap-1.5 px-3 py-1.5 bg-white/5 border border-white/10 rounded-full text-xs text-navy-300">
+					<Fragment set:html={cred.icon} />
+					{cred.badge ?? cred.title}
+				</span>
+			))}
 		</div>
 	</div>
 

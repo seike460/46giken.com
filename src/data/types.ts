@@ -11,6 +11,10 @@ export interface Credential {
 	detail: string;
 	period?: string;
 	sourceUrl?: string;
+	/** バッジ表示用の短縮文言。未指定なら title を使う */
+	badge?: string;
+	/** バッジ表示用の inline SVG */
+	icon?: string;
 }
 
 export interface Offer {
