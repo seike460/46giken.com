@@ -5,7 +5,7 @@ export const baseJsonLd = [
 		"@context": "https://schema.org",
 		"@type": "Person",
 		name: siteIdentity.personName,
-		alternateName: `Shiro Seike ${siteIdentity.handle}`,
+		alternateName: ["Shiro Seike", siteIdentity.handle],
 		url: "https://46giken.com",
 		jobTitle: siteIdentity.role,
 		worksFor: {
@@ -43,8 +43,11 @@ export const baseJsonLd = [
 		areaServed: { "@type": "Country", name: "JP" },
 		offers: {
 			"@type": "Offer",
-			priceCurrency: "JPY",
-			price: "30000",
+			priceSpecification: {
+				"@type": "PriceSpecification",
+				priceCurrency: "JPY",
+				minPrice: "30000",
+			},
 			description: "1回 60〜90分のオンラインセッション（税別）",
 		},
 	},
@@ -58,9 +61,12 @@ export const baseJsonLd = [
 		areaServed: { "@type": "Country", name: "JP" },
 		offers: {
 			"@type": "Offer",
-			priceCurrency: "JPY",
-			price: "50000",
-			description: "形式・拘束時間により個別見積もり（税別・渡航費宿泊費実費）",
+			priceSpecification: {
+				"@type": "PriceSpecification",
+				priceCurrency: "JPY",
+				minPrice: "50000",
+			},
+			description: "形式・拘束時間により個別見積もり（税別・交通費と宿泊費は実費）",
 		},
 	},
 	{
@@ -69,12 +75,15 @@ export const baseJsonLd = [
 		provider: { "@type": "Organization", name: siteIdentity.siteName },
 		name: "技術広報支援",
 		description:
-			"発信テーマの棚卸し、記事・スライド・登壇企画の整理など、技術広報を継続できる形に支援する月額顧問型サービス。",
+			"発信テーマの棚卸し、記事・スライド・登壇企画の整理など、技術広報を継続できる体制づくりを支援する月額顧問型サービス。",
 		areaServed: { "@type": "Country", name: "JP" },
 		offers: {
 			"@type": "Offer",
-			priceCurrency: "JPY",
-			price: "50000",
+			priceSpecification: {
+				"@type": "PriceSpecification",
+				priceCurrency: "JPY",
+				minPrice: "50000",
+			},
 			description: "月額顧問型（税別）",
 		},
 	},
