@@ -1,5 +1,5 @@
 ---
-import { siteIdentity } from "../data/identity";
+import { heroCredentials, siteIdentity } from "../data/identity";
 
 const focusAreas = [
 	{
@@ -24,12 +24,7 @@ const focusAreas = [
 	},
 ];
 
-const credentials = [
-	"AWS Ambassador (2026)",
-	"AWS Community Builder (Serverless)",
-	"2025 Japan AWS Top Engineers (Services)",
-	"JAWS-UG Fukuoka オーガナイザー",
-];
+const credentials = heroCredentials.slice(0, 5).map((cred) => cred.badge ?? cred.title);
 ---
 
 <section id="about" class="py-20 px-6">

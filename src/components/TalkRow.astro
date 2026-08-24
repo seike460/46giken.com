@@ -1,0 +1,27 @@
+---
+import { isUpcomingTalk } from "../data/talks";
+import type { Talk } from "../data/types";
+
+interface Props {
+	talk: Talk;
+}
+
+const { talk } = Astro.props;
+---
+
+<div class="border-t border-navy-200 dark:border-navy-700 pt-5 first:border-none first:pt-0">
+	<p class="text-xs text-navy-400 flex items-center gap-2">
+		<span>{talk.date}</span>
+		{isUpcomingTalk(talk) && (
+			<span class="px-1.5 py-0.5 text-[10px] font-semibold text-accent border border-accent/40 rounded-full">予定</span>
+		)}
+	</p>
+	<h4 class="mt-1 text-base font-semibold text-navy-900 dark:text-navy-100">{talk.title}</h4>
+	<p class="mt-1 text-sm text-navy-600 dark:text-navy-400">{talk.event}</p>
+	<div class="mt-3 flex flex-wrap gap-4">
+		<a href={talk.href} target="_blank" rel="noopener noreferrer" class="text-sm text-accent hover:text-accent-dark transition-colors">Slides ↗</a>
+		{talk.proofUrl && (
+			<a href={talk.proofUrl} target="_blank" rel="noopener noreferrer" class="text-sm text-navy-400 hover:text-accent transition-colors">Event ↗</a>
+		)}
+	</div>
+</div>
