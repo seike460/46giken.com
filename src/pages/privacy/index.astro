@@ -1,0 +1,120 @@
+---
+import Footer from "../../components/Footer.astro";
+import Header from "../../components/Header.astro";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+
+const rows = [
+	{ label: "事業者", value: "ヨンロク技研（YONROKU GIKEN）　代表者 清家史郎" },
+	{
+		label: "所在地",
+		value:
+			"個人の住居を事業所としているため、ページ上での掲載は控えております。お求めがありましたら、お問い合わせフォームから遅滞なくお答えします。",
+	},
+	{
+		label: "取得する情報",
+		value:
+			"お問い合わせフォームで、お名前または会社名（ご担当者名を含む場合があります）、メールアドレス、ご相談の種別、ご相談内容をお預かりします。これら以外の情報を入力していただく欄は設けておりません。",
+	},
+	{
+		label: "利用目的",
+		value:
+			"お問い合わせへの回答、ご依頼内容の検討とお見積もりの作成、および対応の経緯の記録に利用します。これら以外の目的には利用しません。",
+	},
+	{
+		label: "送信後の自動返信",
+		value:
+			"送信いただくと、受付番号を記載した確認のメールを、ご入力のメールアドレス宛に自動でお送りします。あわせて、同じ内容を当方の連絡先メールアドレスへ通知します。",
+	},
+	{
+		label: "自動送信への対策",
+		value:
+			"フォームには、機械による自動送信を判別するための入力欄と、送信までの時間の計測を設けています。あわせて、送信元のページが当サイトであることを確認しています。いずれも人が入力する情報ではないため、ご相談の内容としては利用も保存もいたしません。なお、送信元が確認できなかった場合は、その旨と送信元のアドレスがシステムの動作記録に残ります。",
+	},
+	{
+		label: "保管の場所",
+		value: "Amazon Web Services の東京リージョン（日本国内）に保管します。",
+	},
+	{
+		label: "保管の期間",
+		value:
+			"お問い合わせの記録は、過去のやり取りの経緯を確認できるようにするため、期間を定めずに保管します。消去をご希望の場合は、お問い合わせフォームからお申し出ください。ご本人であることを確認のうえ、個別に対応します。",
+	},
+	{
+		label: "第三者への提供",
+		value: "法令に基づく場合を除き、ご本人の同意なく第三者へ提供することはありません。",
+	},
+	{
+		label: "業務の委託",
+		value:
+			"情報の保管とメールの送信に、Amazon Web Services を利用しています。委託先に対しては、取り扱いについて必要な監督を行います。",
+	},
+	{
+		label: "安全管理",
+		value:
+			"通信はすべて暗号化しています。お預かりした情報を取り扱うのは代表者のみです。システムの動作記録は、1か月を経過したものから順次削除します。",
+	},
+	{
+		label: "アクセス解析",
+		value:
+			"アクセス解析の仕組みは導入しておらず、閲覧の履歴を追跡する Cookie も利用していません。表示テーマの設定のみ、お使いのブラウザー内に保存しますが、当方へ送信されることはありません。",
+	},
+	{
+		label: "外部サービスの利用",
+		value:
+			"ページの表示に Google Fonts を利用しています。表示の際、お使いの端末の IP アドレスなどが Google へ送信されます。",
+	},
+	{
+		label: "開示等のご請求",
+		value:
+			"お預かりしている個人データについて、利用目的の通知、開示、内容の訂正・追加・削除、利用の停止、消去、第三者への提供の停止をご請求いただけます。お問い合わせフォームから、ご請求の内容と、当方からお送りした受付番号またはご登録のメールアドレスをお知らせください。ご本人であることを確認のうえ、法令の定めに従って対応し、同じメールアドレス宛に結果をご返信します。手数料はいただきません。",
+	},
+	{
+		label: "苦情・ご相談の窓口",
+		value: "個人情報の取り扱いに関する苦情およびご相談は、お問い合わせフォームで承ります",
+		href: "/#contact",
+	},
+	{
+		label: "本方針の改定",
+		value:
+			"内容を変更する場合は、変更後の本方針をこのページに掲載します。掲載した時点から効力が生じます。",
+	},
+];
+---
+
+<BaseLayout
+	title="プライバシーポリシー | ヨンロク技研"
+	description="ヨンロク技研のプライバシーポリシー。お問い合わせフォームでお預かりする情報の取得目的、保管、第三者への提供、開示等のご請求の受付についてご案内します。"
+>
+	<Header currentPath="/privacy/" />
+	<main id="content" class="py-28 px-6">
+		<div class="mx-auto max-w-3xl">
+			<p class="text-accent text-sm font-medium tracking-widest uppercase mb-3">Privacy</p>
+			<h1 class="text-2xl md:text-3xl font-bold text-navy-900 dark:text-navy-100 mb-4">
+				プライバシーポリシー
+			</h1>
+			<p class="text-sm text-navy-600 dark:text-navy-400 mb-10">
+				ヨンロク技研は、お問い合わせフォームでお預かりする個人情報を、以下のとおり取り扱います。お預かりする情報は、お問い合わせへの対応に必要な範囲に限っています。
+			</p>
+
+			<dl class="divide-y divide-navy-200 dark:divide-navy-700">
+				{rows.map((row) => (
+					<div class="py-5 sm:grid sm:grid-cols-3 sm:gap-4">
+						<dt class="text-sm font-semibold text-navy-900 dark:text-navy-100">{row.label}</dt>
+						<dd class="mt-1 text-sm text-navy-600 dark:text-navy-400 sm:col-span-2 sm:mt-0">
+							{row.href ? (
+								<a href={row.href} class="text-accent hover:underline">
+									{row.value}
+								</a>
+							) : (
+								row.value
+							)}
+						</dd>
+					</div>
+				))}
+			</dl>
+
+			<p class="mt-10 text-xs text-navy-500 dark:text-navy-400">制定日 2026年8月25日</p>
+		</div>
+	</main>
+	<Footer />
+</BaseLayout>
