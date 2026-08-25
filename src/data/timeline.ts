@@ -4,7 +4,7 @@ export const timeline: TimelineEntry[] = [
 	{
 		year: "2012",
 		title: "Fukuoka.php Vol.2 への参加が、コミュニティとの接点の起点",
-		body: "2012年9月30日、WordBench福岡ではなくFukuoka.php Vol.2への参加がエンジニアとしてのコミュニティ活動の第一歩。後の登壇や運営の原点になった時期。",
+		body: "2012年7月20日開催の Fukuoka.php Vol.2 へ参加。エンジニアとしてのコミュニティ活動の起点。",
 	},
 	{
 		year: "2016",
