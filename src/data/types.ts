@@ -38,7 +38,8 @@ export interface Talk {
 	date: string;
 	theme: "Serverless" | "Observability" | "Architecture" | "AI / API" | "PHP / Web" | "Community";
 	summary: string;
-	href: string;
+	/** 資料の URL。資料が現存しない登壇では省略する */
+	href?: string;
 	proofUrl?: string;
 	featured?: boolean;
 }

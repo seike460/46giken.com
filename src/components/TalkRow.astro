@@ -1,5 +1,5 @@
 ---
-import { isUpcomingTalk } from "../data/talks";
+import { isUpcomingTalk, primaryTalkLink } from "../data/talks";
 import type { Talk } from "../data/types";
 
 interface Props {
@@ -7,6 +7,9 @@ interface Props {
 }
 
 const { talk } = Astro.props;
+const primary = primaryTalkLink(talk);
+// 主リンクが資料のときだけ、イベントページを副リンクとして併記する
+const secondary = talk.href && talk.proofUrl ? talk.proofUrl : null;
 ---
 
 <div class="border-t border-navy-200 dark:border-navy-700 pt-5 first:border-none first:pt-0">
@@ -19,9 +22,27 @@ const { talk } = Astro.props;
 	<h4 class="mt-1 text-base font-semibold text-navy-900 dark:text-navy-100">{talk.title}</h4>
 	<p class="mt-1 text-sm text-navy-600 dark:text-navy-400">{talk.event}</p>
 	<div class="mt-3 flex flex-wrap gap-4">
-		<a href={talk.href} target="_blank" rel="noopener noreferrer" class="text-sm text-accent hover:text-accent-dark transition-colors">Slides ↗</a>
-		{talk.proofUrl && (
-			<a href={talk.proofUrl} target="_blank" rel="noopener noreferrer" class="text-sm text-navy-400 hover:text-accent transition-colors">Event ↗</a>
+		{primary && (
+			<a
+				href={primary.href}
+				target="_blank"
+				rel="noopener noreferrer"
+				aria-label={`${talk.title}（${talk.event}）の${primary.label}`}
+				class="text-sm text-accent hover:text-accent-dark transition-colors"
+			>
+				{primary.label}<span aria-hidden="true"> ↗</span>
+			</a>
+		)}
+		{secondary && (
+			<a
+				href={secondary}
+				target="_blank"
+				rel="noopener noreferrer"
+				aria-label={`${talk.event} のイベントページ`}
+				class="text-sm text-navy-400 hover:text-accent transition-colors"
+			>
+				イベント<span aria-hidden="true"> ↗</span>
+			</a>
 		)}
 	</div>
 </div>

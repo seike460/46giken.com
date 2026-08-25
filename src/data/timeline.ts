@@ -14,8 +14,8 @@ export const timeline: TimelineEntry[] = [
 	},
 	{
 		year: "2017",
-		title: "PHPカンファレンス福岡で初登壇",
-		body: "『君の選択は正しいのか？』で登壇。",
+		title: "InnoCAFE#27 で登壇を開始",
+		body: "1月の InnoCAFE#27 で『ちょっとイケてる自己紹介』を発表。6月の PHPカンファレンス福岡 2017 で『君の選択は正しいのか？』を発表し、カンファレンス登壇を開始。",
 		showOnTop: true,
 	},
 	{

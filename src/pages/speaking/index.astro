@@ -125,9 +125,27 @@ const requestChecklist = [
 							<p class="mt-1 text-xs text-navy-500">{talk.date}</p>
 							<p class="mt-3 text-sm text-navy-400">{talk.summary}</p>
 							<div class="mt-4 flex flex-wrap gap-4">
-								<a href={talk.href} target="_blank" rel="noopener noreferrer" class="text-sm text-accent hover:text-accent-light transition-colors">Slides ↗</a>
+								{talk.href && (
+									<a
+										href={talk.href}
+										target="_blank"
+										rel="noopener noreferrer"
+										aria-label={`${talk.title}（${talk.event}）の資料`}
+										class="text-sm text-accent hover:text-accent-light transition-colors"
+									>
+										資料<span aria-hidden="true"> ↗</span>
+									</a>
+								)}
 								{talk.proofUrl && (
-									<a href={talk.proofUrl} target="_blank" rel="noopener noreferrer" class="text-sm text-navy-400 hover:text-accent transition-colors">Event ↗</a>
+									<a
+										href={talk.proofUrl}
+										target="_blank"
+										rel="noopener noreferrer"
+										aria-label={`${talk.event} のイベントページ`}
+										class="text-sm text-navy-400 hover:text-accent transition-colors"
+									>
+										イベント<span aria-hidden="true"> ↗</span>
+									</a>
 								)}
 							</div>
 						</div>

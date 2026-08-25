@@ -912,6 +912,103 @@ export const talks: Talk[] = [
 	},
 	// --- 2018 ---
 	{
+		title: "Scalable Serverless DataReceiver",
+		event: "Serverless Meetup Fukuoka #3",
+		date: "2018-11-16",
+		theme: "Serverless",
+		summary: "スケールするサーバーレスのデータ受信基盤。",
+		href: "https://slide.seike460.com/slides/serverlessfukuoka3",
+		proofUrl: "https://serverless.connpass.com/event/102585/",
+	},
+	{
+		title: "AWS Lambda Goのgoroutine周り",
+		event: "Fukuoka.go#12",
+		date: "2018-10-04",
+		theme: "Serverless",
+		summary: "AWS Lambda の Go ランタイムにおける goroutine の扱い。",
+		href: "https://slide.seike460.com/slides/fukuokago12",
+		proofUrl: "https://fukuokago.connpass.com/event/99807/",
+	},
+	{
+		title: "Replace PHP Using Elixir",
+		event: "FUKUOKA Engineers Day 2018 ~Autumn~",
+		date: "2018-09-22",
+		theme: "PHP / Web",
+		summary: "PHP の処理を Elixir へ置き換える検証。",
+		proofUrl: "https://engineers-day.connpass.com/event/91473/",
+	},
+	{
+		title: "Cypress for CircleCI",
+		event: "俺の話を聞け！！LT大会 #11",
+		date: "2018-09-12",
+		theme: "Architecture",
+		summary: "CircleCI 上での Cypress によるテスト実行。",
+		href: "https://slide.seike460.com/slides/chibi_developer11",
+		proofUrl: "https://cdg.connpass.com/event/98467/",
+	},
+	{
+		title: "Elixirで作るWEBアプリ",
+		event: "リモートで勉強会#2",
+		date: "2018-09-07",
+		theme: "PHP / Web",
+		summary: "Elixir による Web アプリケーションの実装。",
+		href: "https://slide.seike460.com/slides/remosta2",
+		proofUrl: "https://remote-study.connpass.com/event/97372/",
+	},
+	{
+		title: "Serverless Framework Production Deploy",
+		event: "Serverless Meetup Fukuoka #2",
+		date: "2018-08-22",
+		theme: "Serverless",
+		summary: "Serverless Framework による本番環境へのデプロイ構成。",
+		href: "https://slide.seike460.com/slides/serverlessfukuoka2",
+		proofUrl: "https://serverless.connpass.com/event/95334/",
+	},
+	{
+		title: "ServerlessとVue.js",
+		event: "Vue Night in Fukuoka #1",
+		date: "2018-07-12",
+		theme: "Serverless",
+		summary: "サーバーレス構成と Vue.js の組み合わせ。",
+		proofUrl: "https://cdg.connpass.com/event/91858/",
+	},
+	{
+		title: "Serverless Framework Production Deploy",
+		event: "#4 FukuokaJS LTイベント",
+		date: "2018-06-20",
+		theme: "Serverless",
+		summary: "Serverless Framework による本番環境へのデプロイ構成。",
+		href: "https://slide.seike460.com/slides/fukuokajs4",
+		proofUrl: "https://fukuokajs.connpass.com/event/90425/",
+	},
+	{
+		title: "Powered by Golang Fusic/gear",
+		event: "Fukuoka.go#11",
+		date: "2018-06-14",
+		theme: "Architecture",
+		summary: "Go で開発した社内ツール Fusic/gear の紹介。",
+		href: "https://slide.seike460.com/slides/fukuokago11",
+		proofUrl: "https://fukuokago.connpass.com/event/87684/",
+	},
+	{
+		title: "俺の物理メモリが足りない",
+		event: "俺の話を聞け！！LT大会 #9",
+		date: "2018-05-24",
+		theme: "Community",
+		summary: "開発機の物理メモリをテーマにした LT。",
+		href: "https://speakerdeck.com/seike460/an-falsewu-li-memorikazu-rinai-1",
+		proofUrl: "https://cdg.connpass.com/event/87405/",
+	},
+	{
+		title: "AWS Lambda Go で SPA試してみた",
+		event: "Fukuoka.go#10",
+		date: "2018-03-28",
+		theme: "Serverless",
+		summary: "AWS Lambda の Go ランタイムで SPA を構成した検証。",
+		href: "https://speakerdeck.com/seike460/aws-lambda-go-de-spashi-sitemita",
+		proofUrl: "https://fukuokago.connpass.com/event/81056/",
+	},
+	{
 		title: "PHPは本当に遅いのか",
 		event: "PHPカンファレンス 2018",
 		date: "2018-12-15",
@@ -936,6 +1033,22 @@ export const talks: Talk[] = [
 		summary: "Fusic 入社後、初のカンファレンス登壇。",
 		href: "https://speakerdeck.com/seike460/jun-falsexuan-ze-hazheng-siifalseka",
 	},
+	{
+		title: "受託開発における環境構築",
+		event: "Geeks Who Drink in Fukuoka - Tech Meetup Edition -",
+		date: "2017-03-10",
+		theme: "Architecture",
+		summary: "受託開発における環境構築の進め方。",
+		proofUrl: "https://nulab.connpass.com/event/50702/",
+	},
+	{
+		title: "ちょっとイケてる自己紹介",
+		event: "InnoCAFE#27 新年の抱負LT大会@福岡",
+		date: "2017-01-20",
+		theme: "Community",
+		summary: "新年の抱負をテーマにした LT 大会での自己紹介。",
+		proofUrl: "https://innocafe.connpass.com/event/48337/",
+	},
 ];
 
 export const talkThemes = [
@@ -955,3 +1068,14 @@ export const parseTalkDate = (date: string): Date => {
 
 export const isUpcomingTalk = (talk: Talk, now: Date = new Date()): boolean =>
 	parseTalkDate(talk.date) > now;
+
+/**
+ * 登壇カードの主リンクを決める。
+ * 資料が現存する場合は資料へ、無い場合はイベントの公式ページへ向ける。
+ * どちらも無い場合は null を返し、呼び出し側でリンクを描画しない。
+ */
+export const primaryTalkLink = (talk: Talk): { href: string; label: string } | null => {
+	if (talk.href) return { href: talk.href, label: "資料" };
+	if (talk.proofUrl) return { href: talk.proofUrl, label: "イベント" };
+	return null;
+};
